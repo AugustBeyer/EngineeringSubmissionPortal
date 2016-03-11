@@ -37,7 +37,7 @@ include "assignmentinfo.php";
             <img src="../images/logo.png" alt="logo" class="icon">
             </a>
         </li>
-        <li id="ESPName">SCU Engineering Submission Portal</li>
+        <li id="ESPName"><a href="../index.html"> SCU Engineering Submission Portal</a></li>
     </ul>
 </div>
 <div id="nav">
