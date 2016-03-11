@@ -4,7 +4,8 @@ if (!isset($_SESSION))
 if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 {
     die("Unauthorized access. Please return to the login page.");
-} 
+}
+include "teaminfo.php"; 
 ?>
 
 <html lang="en">
@@ -41,13 +42,13 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 </div>
 <div id="nav">
     <ul class="nav">
-        <li class="dropdown"><a href="home.php" class="link" onmousedown="//switchView('assignments');">ASSIGNMENTS</a>
+        <li class="dropdown"><a href="home.php" class="link">ASSIGNMENTS</a>
             <div class="dropdown-content">
                 <a href="home.php">View Assignments</a>
                 <a href="newAssignment.php">Create an Assignment</a>
             </div>
         </li>
-        <li class="dropdown"><a href="teams.php" class="link active" onmousedown="//switchView('teams');">TEAMS</a>
+        <li class="dropdown"><a href="teams.php" class="link active">TEAMS</a>
             <div class="dropdown-content">
                 <a href="createteam.php">Create a Team</a>
                 <hr>
