@@ -6,7 +6,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 0))
 }  
 require "../../backend/db_config.php";
 
-$current_year_path = "/DCNFS/web/esp/2016/";
+$current_year_path = "../../2016/";
 
 $student_id = $_SESSION["user_id"];
 $assignment_id = htmlspecialchars($_GET["assignment_id"]);
