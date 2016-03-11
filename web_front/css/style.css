@@ -1,0 +1,124 @@
+/* ---- base ---- */
+
+html,body{ 
+	width:100%;
+	height:100%;
+	font:normal 75% Arial, Helvetica, sans-serif;
+}
+
+body{
+  margin: 0;
+}
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+h1 {
+    font-size: 175%;
+}
+h2 {
+    font-size: 175%;
+}
+h3 {
+    font-size: 175%;
+}
+h4 {
+    font-size: 125%;
+}
+
+/* ---- particles.js container ---- */
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
+  position: absolute;
+  background-position: 50% 50%;
+}
+
+#space{
+  padding: 5em;
+}
+
+#main {
+  position: absolute;
+margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 300px;
+  text-align: center;   
+  background-color: rgba(255,255,255,0.88);
+  text-shadow: 0 0 2px #fffacd;
+  padding-top:3em;
+  padding-bottom: 3em;
+  padding-left:5em;
+  padding-right: 5em;
+    border-style: outset;
+    border-width: 1px;
+    box-shadow: 2px 2px 2px #A8A8A8;
+}
+
+#help {
+  background-color: rgba(255,255,255,0.88);
+  text-align: left;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.form_button:hover {
+     background-color: #707070;
+    color: #fff;
+    border: solid 1px #fff;
+}
+.form_button {
+    display: inline-block;
+    border: solid 1px #707070;
+    padding: 7px 18px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1em;
+    background-color: #fff;
+    color: #707070;
+    
+    
+}
+.form_field{ 
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+
+.form_field input[type="text"]:focus,
+.form_field input[type="text"].focus {
+      box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+} 
+
+ #info_login {
+  position: relative;
+  width:2em; height:2em;
+  float: left;
+  left: 100%;
+  opacity: 0.4;
+  border-radius: 50%;
+ } 
+
+ #scu_logo {
+  position: relative;
+  width:4em; height:4em;
+  float: left;
+  left: 0%;
+  opacity: 0.8;
+ }
+ #info_login:hover{
+  opacity: 1.0;
+ }
+
+ #info_container{
+  display: none;
+ }
+
+

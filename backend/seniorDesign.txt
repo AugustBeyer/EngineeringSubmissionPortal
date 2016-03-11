@@ -1,0 +1,148 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 07, 2016 at 03:00 AM
+-- Server version: 5.5.46-0ubuntu0.14.04.2
+-- PHP Version: 5.5.9-1ubuntu4.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `seniorDesign`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `advisors`
+--
+
+CREATE TABLE IF NOT EXISTS `advisors` (
+  `primary_advisor_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `advisor_username` varchar(50) NOT NULL,
+  `firstname` varchar(30) DEFAULT NULL,
+  `lastname` varchar(30) DEFAULT NULL,
+  `department` enum('ELEN','COEN','MECH','CENG','BIOE') DEFAULT NULL,
+  PRIMARY KEY (`primary_advisor_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `advisors`
+--
+
+INSERT INTO `advisors` (`primary_advisor_id`, `advisor_username`, `firstname`, `lastname`, `department`) VALUES
+(1, 'datkinson', 'Darren', 'Atkinson', 'COEN'),
+(2, 'sfigs', 'Silvia', 'Figs', 'ELEN');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignments`
+--
+
+CREATE TABLE IF NOT EXISTS `assignments` (
+  `primary_assignment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `due_date` datetime NOT NULL,
+  `description` text NOT NULL,
+  `reference_location` varchar(100) NOT NULL,
+  `reference_file_name` varchar(50) NOT NULL,
+  `submitted_location` varchar(100) NOT NULL,
+  `submitted_file_name` varchar(50) NOT NULL,
+  `submitted_time` datetime DEFAULT NULL,
+  `submitted_flag` tinyint(1) NOT NULL DEFAULT '0',
+  `assignment_team_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`primary_assignment_id`),
+  KEY `assignment_team_id` (`assignment_team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE IF NOT EXISTS `students` (
+  `student_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `scu_username` varchar(50) NOT NULL,
+  `first_name` varchar(30) DEFAULT NULL,
+  `last_name` varchar(30) DEFAULT NULL,
+  `department` enum('ELEN','COEN','MECH','CENG','BIOE') DEFAULT NULL,
+  `students_team_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`student_id`),
+  UNIQUE KEY `scu_username` (`scu_username`),
+  KEY `team_id` (`students_team_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`student_id`, `scu_username`, `first_name`, `last_name`, `department`, `students_team_id`) VALUES
+(1, 'jvillanu', 'Joseph', 'Villanueva', 'MECH', NULL),
+(2, 'jsofer', 'Jonny', 'Sofer', 'COEN', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teams`
+--
+
+CREATE TABLE IF NOT EXISTS `teams` (
+  `primary_team_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(100) DEFAULT NULL,
+  `cumulative_grade` float DEFAULT NULL,
+  PRIMARY KEY (`primary_team_id`),
+  UNIQUE KEY `cumulative_grade` (`cumulative_grade`),
+  KEY `team_id` (`primary_team_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Will hold team information' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teams_advisors_junction`
+--
+
+CREATE TABLE IF NOT EXISTS `teams_advisors_junction` (
+  `junction_team_id` int(10) unsigned DEFAULT NULL,
+  `junction_advisor_id` int(10) unsigned DEFAULT NULL,
+  KEY `junction_team_id` (`junction_team_id`,`junction_advisor_id`),
+  KEY `junction_team_id_2` (`junction_team_id`),
+  KEY `junction_advisor_id` (`junction_advisor_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `assignments_ibfk_1` FOREIGN KEY (`assignment_team_id`) REFERENCES `teams` (`primary_team_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`students_team_id`) REFERENCES `teams` (`primary_team_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `teams_advisors_junction`
+--
+ALTER TABLE `teams_advisors_junction`
+  ADD CONSTRAINT `teams_advisors_junction_ibfk_2` FOREIGN KEY (`junction_advisor_id`) REFERENCES `advisors` (`primary_advisor_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `teams_advisors_junction_ibfk_1` FOREIGN KEY (`junction_team_id`) REFERENCES `teams` (`primary_team_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

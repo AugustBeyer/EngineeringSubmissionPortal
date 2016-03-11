@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Engineering Submission Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="web_front/css/style.css">
+  <link rel="icon" type="image/png" href="web_front/images/logo.png">
+</head>
+<body>
+
+<!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+<!-- particles.js container -->
+<div id="particles-js">
+  <canvas class="particles-js-canvas-el" width="480" height="1466" style="width: 100%; height: 100%;">
+      </div>
+
+<!-- scripts -->
+<!--<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>-->
+<script src="web_front/js/particles.js"></script>
+<script src="web_front/js/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Show / Hide the info box -->
+<script type="text/javascript">
+      $(document).ready(function(){
+    $("#info_login").click(function(){
+      if ( $("#info_container").is(":hidden") )
+      {
+        $("#info_container").slideDown("slow");
+      }
+      else
+      {
+       $("#info_container").slideUp("slow");  
+      }
+  });
+});</script>
+
+<!-- Body of the login page -->
+<div id="space"></div>
+<!--<div id="container"> -->
+  <div id="main" class="center">
+    <div id="login_container">
+      <h1>Engineering Submission Portal</h1>
+      <p style="font-size: 11px;">Login using your SCU Novell username and password</p>
+        <br>
+        <hr>
+        <br>
+      <!-- Form -->
+      <Form action="backend/authenticate.php" method="post">
+      <input class ="form_field" type="text" name="username" placeholder="Username"><br>
+          <br>
+        
+      <input class ="form_field" type="password" name="password" placeholder="Password"><br>
+      <br>
+      <input type="submit" value="Login" class="form_button">
+      </Form>
+    </div>
+
+    <!-- Help / Info Div -->
+    <div id="info_container">
+
+    <h2>Help and Information</h2>
+    <div id="help">
+    <ul style="list-style-type:circle; font-size: 10px; background-color: rgba(255,255,255,0);">
+    <li>for help with your Novell account, click <a href="http://scu.edu/sculogin/">here</a></li>
+    <li>for more info on senior design, click <a href="http://www.scu.edu/engineering/srdesign/">here</a></li>
+    <li>try clicking around on this page to interact with the dots</li>
+    </ul>
+        
+    </div>
+         <br>
+        <br>
+    </div>
+    <img id="info_login" src="web_front/images/info.png" alt="information">
+ <!-- </div> -->
+</div> 
+</body>
+</html>
