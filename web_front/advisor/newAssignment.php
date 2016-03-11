@@ -37,7 +37,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
         
         <li><a href="home.php" class="link">HOME</a>
         </li>
-        <li><a href="#settings"  class="link active"onclick="return false"onmousedown="autoScrollTo('settings');">SETTINGS</a>
+        <li><a href="settings.php"  class="link" onclick="return false"onmousedown="autoScrollTo('settings');">SETTINGS</a>
         </li>
     </ul>
 </div>
