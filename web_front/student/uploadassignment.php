@@ -6,6 +6,8 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 0))
 }  
 require "../../backend/db_config.php";
 
+$current_year_path = "/DCNFS/web/esp/2016/";
+
 $student_id = $_SESSION["user_id"];
 $assignment_id = htmlspecialchars($_GET["assignment_id"]);
 echo $assignment_id;
@@ -28,7 +30,7 @@ try
     }
 
     $fuckPHP1 = 1;
-    $fuckPHP2 = "/var/www/html/2016/" . $current_assignment["assignment_team_id"];
+    $fuckPHP2 = $current_year_path . $current_assignment["assignment_team_id"];
     $fuckPHP3 = basename($_FILES["fileToUpload"]["name"]);
     $fuckPHP4 = date('Y/m/d H:i:s');
 
@@ -47,7 +49,7 @@ catch(PDOException $e)
 
 $dbh = null;
 
-$submitted_file_location = "/var/www/html/2016/" . $current_assignment["assignment_team_id"];
+$submitted_file_location = $current_year_path . $current_assignment["assignment_team_id"];
 
 $target_file = $submitted_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

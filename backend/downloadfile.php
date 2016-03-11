@@ -3,9 +3,11 @@
 $team_id = htmlspecialchars($_GET["tid"]);
 $file_name = htmlspecialchars($_GET["name"]);
 
+$current_year_path = "/DCNFS/web/esp/2016/";
+
 echo "Preparing file for download\n";
 
-$file = "/var/www/html/2016/" . $team_id . "/" . $file_name;
+$file = $current_year_path . $team_id . "/" . $file_name;
 
     if (file_exists($file)) 
     {

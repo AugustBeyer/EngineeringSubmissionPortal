@@ -2,6 +2,8 @@
 session_start();
 require "db_config.php";
 
+$current_year_path = "/DCNFS/web/esp/2016/";
+
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST')
 {
@@ -22,7 +24,7 @@ try {
     $stmt->execute();
 
     $assignment_team_id = $stmt->fetch(PDO::FETCH_ASSOC)["primary_team_id"];
-    $reference_file_location = "/var/www/html/2016/" . $assignment_team_id;
+    $reference_file_location = $current_year_path . $assignment_team_id;
 
     $target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;

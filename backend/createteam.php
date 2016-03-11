@@ -2,6 +2,8 @@
 session_start();
 require "db_config.php";
 
+$current_year_path = "/DCNFS/web/esp/2016/";
+
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST')
 {
@@ -42,7 +44,7 @@ VALUES (:project_name, :cumulative_grade)");
     $stmt->execute();
 
     //create new directory for the team
-    mkdir("/var/www/html/2016/" . $team_id, 0777);
+    mkdir($current_year_path . $team_id, 0777);
 
     echo "New records created successfully\r\n";
     header('Location: ../web_front/advisor/home.php');
