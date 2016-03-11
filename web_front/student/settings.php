@@ -29,7 +29,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 0))
                 <img src="../images/logo.png" alt="logo" class="icon">
             </a>
         </li>
-        <li id="ESPName"><a href="../index.html"> SCU Engineering Submission Portal</a></li>
+        <li id="ESPName"><a href="../../index.html"> SCU Engineering Submission Portal</a></li>
     </ul>
 </div>
 <div id="nav">
