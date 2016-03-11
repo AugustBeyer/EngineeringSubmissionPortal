@@ -3,7 +3,7 @@
 $team_id = htmlspecialchars($_GET["tid"]);
 $file_name = htmlspecialchars($_GET["name"]);
 
-$current_year_path = "/DCNFS/web/esp/2016/";
+$current_year_path = "../2016/";
 
 echo "Preparing file for download\n";
 

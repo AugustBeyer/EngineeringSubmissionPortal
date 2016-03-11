@@ -1,5 +1,6 @@
 <?php 
-session_start();
+if (!isset($_SESSION))
+    session_start();
 if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 {
     die("Unauthorized access. Please return to the login page.");
