@@ -93,6 +93,7 @@ if ($uploadOk == 0)
 else 
 {
     echo $target_file;
+    chmod($target_file, 0755);
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
     {
         echo "Success!\n";
