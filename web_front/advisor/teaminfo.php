@@ -99,6 +99,21 @@ function printTeamNavBar()
     }
 }
 
+function printTeamCheckboxes()
+{
+    global $project_name_array;
+    global $student_name_array;
+    //Iterate through project_name_array for the size of both arrays
+    for ($i=0; $i < count($project_name_array); $i++) { 
+        
+        //check if project_name_array index is null
+        if( (is_null($project_name_array[$i])) || (count($student_name_array[$i]) == 0) )
+            continue;
+        //echo out html
+        echo $project_name_array[$i] . ": <input type=\"checkbox\" id=\"myCheck" . $i ."\"><br>";
+    }
+}
+
 function printTeamInfo($i)
 {
     global $project_name_array;

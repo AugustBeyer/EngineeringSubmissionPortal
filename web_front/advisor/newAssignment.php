@@ -54,7 +54,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 	Due date: *<input type = "date" name = "due_date"> <br><br>
     Due time: *<input type = "time" name="due_time"> <br><br>    
     Point total: <input type = "number" name = "point_total"> <br><br>
-    Assign to team: *<input type = "text" name="Teamname"><br><br>
+    Assign to teams: * <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
 	Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
 	
     </form>
