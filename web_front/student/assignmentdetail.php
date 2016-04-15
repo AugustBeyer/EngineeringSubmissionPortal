@@ -18,6 +18,7 @@ include "assignmentinfo.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/student.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
+    <script type="text/javascript" src="../js/autoScroll.js"></script>
     <script type="text/javascript" src="../js/konami.js"></script>
     <script type="text/javascript">
         var show = false;
@@ -44,7 +45,7 @@ include "assignmentinfo.php";
         
         <li><a href="home.php" class="link active" onclick="return false" onmousedown="autoScrollTo('mainPageWrapper');">ASSIGNMENTS</a>
         </li>
-        <li><a href="about" class="link"onclick="return false"onmousedown="autoScrollTo('about');">ABOUT</a>
+        <li><a href="home.php" class="link"onclick="return false"onmousedown="autoScrollTo('about');">ABOUT</a>
         </li>
         <li><a href="settings.php" class="link">SETTINGS</a>
         </li>
