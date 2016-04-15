@@ -89,7 +89,7 @@ function printTeamInfo()
     }
     //echo "</ul>";
     echo "<br>";
-    echo "<button class=\"newAssignmentButton\"><a href=\"http://www.niceme.me\">Edit This Meme</a></button>";
+    //echo "<button class=\"newAssignmentButton\"><a href=\"http://www.niceme.me\">Edit This Meme</a></button>";
 }
 
 ?>
