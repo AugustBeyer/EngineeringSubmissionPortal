@@ -43,9 +43,7 @@ include "assignmentinfo.php";
 <div id="nav">
     <ul class="nav">
         
-        <li><a href="home.php" class="link active" onclick="return false" onmousedown="autoScrollTo('mainPageWrapper');">ASSIGNMENTS</a>
-        </li>
-        <li><a href="home.php" class="link"onclick="return false"onmousedown="autoScrollTo('about');">ABOUT</a>
+        <li><a href="home.php" class="link active" onclick="return false">HOME</a>
         </li>
         <li><a href="settings.php" class="link">SETTINGS</a>
         </li>
