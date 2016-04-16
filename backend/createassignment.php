@@ -11,7 +11,7 @@ if ($method == 'POST')
     $due_date = $_POST["due_date"];
     $description = $_POST["description"];
     $point_total = $_POST["point_total"];
-    $teams_array = $_POST["teams"][];
+    $teams_array = $_POST["teams"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
 
