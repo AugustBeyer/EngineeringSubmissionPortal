@@ -20,6 +20,6 @@ $(document).ready(function(){
 	    $("#moreAdvisors").click(function(){
 		append = "Advisor " + iter2 + " Name: <input type = \"text\" name = \"advisor" + iter2 + "\"> <br>";
 		div2.innerHTML = div2.innerHTML + append;
-		iter = iter + 1;
+		iter2 = iter2 + 1;
     });
 });

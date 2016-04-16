@@ -82,7 +82,7 @@ include "teaminfo.php";
     </div>
     <button id="moreStudents" class="form_button">Add more students</button>
      <button id="moreAdvisors" class="form_button">Add another advisor</button>
-	<input type = "submit" value = "submit">
+	<br><input type = "submit" value = "submit" class="form_button">
     </form>
 </div> 
 
