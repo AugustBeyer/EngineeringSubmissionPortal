@@ -10,7 +10,7 @@ function checkAll(bx) {
 $(document).ready(function(){
 	var div = document.getElementById('appendHerePlease');
 	var div2 = document.getElementById('appendAdvisorsHere');
-	var iter = 4;
+	var iter = 2;
 	var iter2 = 2;
     $("#moreStudents").click(function(){
 		append = "Student " + iter + " Name: <input class=\"form_field\" type = \"text\" name = \"student" + iter + "\"> <br>";
