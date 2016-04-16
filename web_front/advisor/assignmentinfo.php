@@ -220,7 +220,7 @@ EAHTML */
 
     //Description
     echo "Description:*<br>";
-    echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\">";
-    echo $current_assignment["description"] . "</textarea><br>";
+    echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\" value=\"" . $current_assignment["description"] ."\">";
+    echo "</textarea><br>";
 }
 ?>

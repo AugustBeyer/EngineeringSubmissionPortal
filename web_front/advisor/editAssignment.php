@@ -58,9 +58,6 @@ $j = htmlspecialchars($_GET["index2"]);
 	<?php printEditAssignmentDetail($i, $j); ?>
 	
     </form>
-        Description:*<br>
-    <textarea rows="4" cols="50" name="description" form="usrform">
-Enter description here...</textarea><br>
         <p style="font-size: 8pt;"><i>a * indicates a required field</i></p>
         <br>
     <input type = "submit" value = "update" form="usrform">
