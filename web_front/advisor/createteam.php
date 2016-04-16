@@ -74,12 +74,13 @@ include "teaminfo.php";
     <form action="../../backend/createteam.php" method="post">
 	Team Name: <input type = "text" name = "Teamname"> <br>
     <div id = "appendHerePlease">
-	Student 1 Name: <input class="form_field" type = "text" name = "student1"> <br>
+	Student 1 Name: <input class="form_field" type = "text" name = "students[]"> <br>
     </div>
     <div id = "appendAdvisorsHere">
+    Advisor 1 (Your) Name: <input class="form_field" type = "text" name = "adivisors[]"> <br>
     </div>
     <button id="moreStudents" class="form_button">Add more students</button>
-     <button id="moreAdvisors" class="form_button">Add another advisor</button>
+    <button id="moreAdvisors" class="form_button">Add another advisor</button>
 	<br><input type = "submit" value = "submit" class="form_button">
     </form>
 </div> 
