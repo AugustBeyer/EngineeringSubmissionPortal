@@ -78,12 +78,12 @@ $j = htmlspecialchars($_GET["index2"]);
         echo "&index2=". $j . ">";
         echo "<input class=\"form_button\" value =\"edit this assignment\" type=\"button\">"; 
         echo "</a>";
+        echo "<a href=deleteAssignment.php?index1=" . $i;
+        echo "&index2=". $j . ">";
+        echo "<input class=\"form_button\" value =\"delete this assignment\" type=\"button\">"; 
+        echo "</a>";
         ?>
-   <a href="deleteAssignment();" onclick = "return confirm('Are you sure you would like to delete this assignment?');">
-<input class="form_button" value ="delete this assignment" type="button"> 
-</a>
 
-    
     <!-- Assignment Template -->
     
     
