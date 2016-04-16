@@ -118,6 +118,14 @@ body {
     background-color: #f2f2f2;
     margin-top: 0px;
 }
+
+.form_button a:link
+{}
+.form_button a:visited
+{}
+.form_button a:active 
+{}
+
 /*  links */
  a:link {
     color: #000000;
