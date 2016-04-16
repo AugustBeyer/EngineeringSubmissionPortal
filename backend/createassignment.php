@@ -15,6 +15,8 @@ if ($method == 'POST')
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
 
+//print_r($_POST);
+
 try 
 {
     
@@ -104,8 +106,7 @@ try
             echo "New records created successfully\r\n";
         }
     }
-    //header('Location: ../web_front/advisor/home.php'); //FuckPHP5
-    header('Location: ../web_front/advisor/dasdasas.php');
+    header('Location: ../web_front/advisor/home.php'); //FuckPHP5
 }
 catch(PDOException $e)
 {
@@ -113,5 +114,6 @@ catch(PDOException $e)
 }
 
 $dbh = null;
+
 
 ?>

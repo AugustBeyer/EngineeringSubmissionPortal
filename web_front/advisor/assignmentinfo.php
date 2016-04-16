@@ -173,4 +173,40 @@ function printAssignmentDetail($i, $j)
         echo "</form>";
     }
 }
+
+function printEditAssignmentDetail($i, $j)
+{
+    global $assignment_info_array;
+    $current_assignment = $assignment_info_array[$i][$j];
+
+    echo "<form action=\"../../backend/backendEditAssignment.php?aid=". $current_assignment["primary_assignment_id"] ."\" method=\"post\" id=\"usrform\" enctype=\"multipart/form-data\">";
+
+    echo "<h1>Edit an Assignment</h1>";
+
+    //Assignment Name
+    echo "Assignment Name: *<input type = \"text\" name = \"assignment_name\" value = \"" . $current_assignment["name"] . "\"<br><br>";
+
+    //Due Date
+    echo "Due Date: *<input type = \"date\" name = \"due_date\"value = \"" . $current_assignment["due_date"] . "\"> <br><br>";
+
+    //Due Time
+    echo "Due Time: *<input type = \"time\" name=\"due_time\"> <br><br>";
+    
+    //Point Total
+    echo "Point Total: *<input type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
+
+    //Reference File
+    echo "Reference File: <input class=\"newAssignmentButton\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
+
+    //Description
+    echo "Description:*<br>";
+    echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\">";
+    echo $current_assignment["description"] . "</textarea><br>";
+
+    echo "</form>";
+        echo "<p style=\"font-size: 8pt;\"><i>a * indicates a required field</i></p>";
+        echo "<br>";
+    echo "<input type = \"submit\" value = \"update\" form=\"usrform\">";
+
+}
 ?>

@@ -7,6 +7,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 } 
 include "teaminfo.php";
 include "assignmentinfo.php";
+
+$i = htmlspecialchars($_GET["index1"]);
+$j = htmlspecialchars($_GET["index2"]);
 ?>
 <html lang="en">
 <head>
@@ -70,13 +73,12 @@ include "assignmentinfo.php";
 <br><br><br>
 <div id="assignments" class="contentbox">
         <?php
-        $i = htmlspecialchars($_GET["index1"]);
-        $j = htmlspecialchars($_GET["index2"]);
         printAssignmentDetail($i, $j);
-    ?>
-   <a href="editAssignment.php">
-<input class="form_button" value ="edit this assignment" type="button"> 
-</a>
+        echo "<a href=editAssignment.php?index1=" . $i;
+        echo "&index2=". $j . ">";
+        echo "<input class=\"form_button\" value =\"edit this assignment\" type=\"button\">"; 
+        echo "</a>";
+        ?>
    <a href="deleteAssignment();" onclick = "return confirm('Are you sure you would like to delete this assignment?');">
 <input class="form_button" value ="delete this assignment" type="button"> 
 </a>
