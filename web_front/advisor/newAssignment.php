@@ -59,7 +59,7 @@ include "teaminfo.php";
     Assign to teams: * <br><br>
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
-	Reference file: <input class="form_button" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
+	Reference file: <input class="form_hidden" type="file" name="fileToUpload" id="fileToUpload"><label for="fileToUpload">Choose a file</label> <br><br>
 	
     </form>
         Description:*<br>

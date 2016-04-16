@@ -447,3 +447,24 @@ text-align: center;
 .form_field input[type="text"]:focus{
          box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
+
+.form_hidden {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.form_hidden + label{ 
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+
+.form_hidden:focus + label,
+.form_hidden + label:hover{
+         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
