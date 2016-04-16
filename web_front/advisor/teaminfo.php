@@ -126,7 +126,7 @@ function printTeamInfo($i)
     }
     //echo "</ul>";
     echo "<br>";
-     echo "<button class=\"newAssignmentButton\"><a href=\"editTeam.php\">Edit This Team</a></button>";
+     echo "<button class=\"form_button\"><a href=\"editTeam.php\">Edit This Team</a></button>";
 }
 
 ?>
