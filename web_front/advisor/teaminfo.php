@@ -110,7 +110,7 @@ function printTeamCheckboxes()
         if( (is_null($project_name_array[$i])) || (count($student_name_array[$i]) == 0) )
             continue;
         //echo out html
-        echo $project_name_array[$i] . ": <input type=\"checkbox\" id=\"myCheck\"" . $i ." name=\"teams[]\" value=\"" . $project_name_array[$i] ."\"><br>";
+        echo $project_name_array[$i] . ": <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"teams[]\" value=\"" . $project_name_array[$i] ."\"><br>";
     }
 }
 
