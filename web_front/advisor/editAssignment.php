@@ -7,6 +7,9 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 }
 include "teaminfo.php";
 include "assignmentinfo.php";
+
+$i = htmlspecialchars($_GET["index1"]);
+$j = htmlspecialchars($_GET["index2"]);
 ?>
 
 <html lang="en">
@@ -52,7 +55,7 @@ include "assignmentinfo.php";
     <div id="formCenter">
         <br>
     <form action="../../backend/backendEditAssignment.php" method="post" id="usrform" enctype="multipart/form-data">
-	<?php printEditAssignmentDetail(); ?>
+	<?php printEditAssignmentDetail($i, $j); ?>
 	
     </form>
         Description:*<br>
