@@ -71,12 +71,10 @@ include "teaminfo.php";
 <br><br>
 <div id="assignments" class="contentbox">
 
-    	<form action="../../backend/createteam.php" method="post">
+    <form action="../../backend/createteam.php" method="post">
 	Team Name: <input type = "text" name = "Teamname"> <br>
     <div id = "appendHerePlease">
 	Student 1 Name: <input class="form_field" type = "text" name = "student1"> <br>
-	Student 2 Name: <input  class="form_field" type = "text" name = "student2"> <br>
-	Student 3 Name: <input class="form_field" type = "text" name = "student3"> <br>
     </div>
     <div id = "appendAdvisorsHere">
     </div>

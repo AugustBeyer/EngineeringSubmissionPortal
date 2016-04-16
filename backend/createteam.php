@@ -13,7 +13,8 @@ if ($method == 'POST')
     $student2 = $_POST["student2"];
     $student3 = $_POST["student3"];
 }
-
+print_r($_POST);
+/*
 try {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -55,5 +56,5 @@ catch(PDOException $e)
     }
 
 $dbh = null;
-
+*/
 ?>
