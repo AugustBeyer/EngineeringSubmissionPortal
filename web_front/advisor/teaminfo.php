@@ -43,6 +43,7 @@ try
         $students_name_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         array_push($student_name_array, $students_name_result);
     }
+    print_r($team_id_array);
 }
 catch(PDOException $e)
 {
