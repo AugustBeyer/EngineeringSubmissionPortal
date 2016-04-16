@@ -17,7 +17,7 @@ include "teaminfo.php";
     <link rel="stylesheet" type="text/css" href="../css/advisor.css">
     <link rel="stylesheet" type="text/css" href="../css/tables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/student.js"></script>
+  <script type="text/javascript" src="../js/advisor.js"></script>
 <script type="text/javascript" src="../js/autoScroll.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
 </head>
@@ -55,7 +55,9 @@ include "teaminfo.php";
 	Due date: *<input type = "date" name = "due_date"> <br><br>
     Due time: *<input type = "time" name="due_time"> <br><br>    
     Point total: <input type = "number" name = "point_total"> <br><br>
-    Assign to teams: * <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
+    Assign to teams: * <br>
+    <input type="checkbox" onclick="checkAll(this)">
+     <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
 	Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
 	
     </form>
