@@ -74,7 +74,9 @@ include "assignmentinfo.php";
         $j = htmlspecialchars($_GET["index2"]);
         printAssignmentDetail($i, $j);
     ?>
-<input formaction="editAssignment.php" class="form_button" value ="edit this assignment" type="submit"> 
+   <a href="editAssignment.php" 
+<input class="form_button" value ="edit this assignment" type="submit"> 
+</a>
 
     
     <!-- Assignment Template -->
