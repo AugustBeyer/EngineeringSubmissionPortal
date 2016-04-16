@@ -49,8 +49,9 @@ include "teaminfo.php";
 <div id="settings" class="contentbox">
     <div id="formCenter">
         <br>
+    <h1>Create an Assignment</h1>
     <form action="../../backend/createassignment.php" method="post" id="usrform" enctype="multipart/form-data">
-	<h1>Create an Assignment</h1>
+	
     Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
 	Due date: *<input type = "date" name = "due_date"> <br><br>
     Due time: *<input type = "time" name="due_time"> <br><br>    
