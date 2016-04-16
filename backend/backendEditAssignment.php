@@ -13,11 +13,8 @@ if ($method == 'POST')
     $point_total = $_POST["point_total"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
-/*
+
 $aid = htmlspecialchars($_GET["aid"]);
-print_r($_POST);
-echo $aid;
-*/
 try 
 {
 
@@ -29,7 +26,7 @@ try
 
     $reference_file_location = $stmt->fetch(PDO::FETCH_ASSOC)["reference_location"];
 
-    if(isset($reference_file_name))
+    if(!empty($reference_file_name))
     {
         $target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -99,8 +96,8 @@ try
     $stmt -> execute();
 
     echo "New records created successfully\r\n";
-    print_r($_POST);
-    //header('Location: ../web_front/advisor/home.php');
+    //print_r($_FILES);
+    header('Location: ../web_front/advisor/home.php');
 }
 catch(PDOException $e)
 {

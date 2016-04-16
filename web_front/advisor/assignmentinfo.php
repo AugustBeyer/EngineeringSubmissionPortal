@@ -142,6 +142,7 @@ function printAssignmentDetail($i, $j)
     echo "<h3>Assignment Description</h3>";
     echo "<hr class= \"detailLine\">";
     echo "<p class= \"assignDetail\">". $current_assignment["description"];
+    echo "<br>";
 
     /*
     echo "<h3>Additional Files</h3>";
