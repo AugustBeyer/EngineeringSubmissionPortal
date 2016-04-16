@@ -10,7 +10,7 @@ include "teaminfo.php";
 
 <html lang="en">
 <head>
-  <title>Create an Assignment</title>
+  <title>Edit an Assignment</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/png" href="../images/logo.png">
@@ -45,7 +45,7 @@ include "teaminfo.php";
 </div>
 
 <div id="mainPageWrapper">
-<h1>Create an Assignment</h1>
+<h1>Edit an Assignment</h1>
 <!--Settings-->
 <div id="settings" class="contentbox">
     <div id="formCenter">
@@ -66,7 +66,7 @@ include "teaminfo.php";
 Enter description here...</textarea><br>
         <p style="font-size: 8pt;"><i>a * indicates a required field</i></p>
         <br>
-    <input type = "submit" value = "submit" form="usrform">
+    <input type = "submit" value = "update" form="usrform">
     </div>
     </div>
 
