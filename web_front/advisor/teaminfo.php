@@ -128,7 +128,8 @@ function printTeamInfo($i)
     }
     //echo "</ul>";
     echo "<br>";
-     echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $team_id_array[$i] . "\">Edit This Team</a></button>";
+    print_r($team_id_array);
+    echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $team_id_array[$i] . "\">Edit This Team</a></button>";
 }
 
 ?>
