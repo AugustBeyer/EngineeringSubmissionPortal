@@ -52,14 +52,14 @@ include "teaminfo.php";
     <h1>Create an Assignment</h1>
     <form action="../../backend/createassignment.php" method="post" id="usrform" enctype="multipart/form-data">
 	
-    Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
-	Due date: *<input type = "date" name = "due_date"> <br><br>
-    Due time: *<input type = "time" name="due_time"> <br><br>    
-    Point total: <input type = "number" name = "point_total"> <br><br>
+    Assignment Name: *<input class="form_field" type = "text" name = "assignment_name"> <br><br>
+	Due date: *<input class="form_field" type = "date" name = "due_date"> <br><br>
+    Due time: *<input class="form_field" type = "time" name="due_time"> <br><br>    
+    Point total: <input class="form_field" type = "number" name = "point_total"> <br><br>
     Assign to teams: * <br><br>
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
-	Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
+	Reference file: <input class="form_button" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
 	
     </form>
         Description:*<br>
@@ -67,7 +67,7 @@ include "teaminfo.php";
 Enter description here...</textarea><br>
         <p style="font-size: 8pt;"><i>a * indicates a required field</i></p>
         <br>
-    <input type = "submit" value = "submit" form="usrform">
+    <input type = "submit" value = "submit" form="usrform" class="form_button">
     </div>
     </div>
 

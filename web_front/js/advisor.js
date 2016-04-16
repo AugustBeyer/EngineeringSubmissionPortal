@@ -13,12 +13,12 @@ $(document).ready(function(){
 	var iter = 4;
 	var iter2 = 2;
     $("#moreStudents").click(function(){
-		append = "Student " + iter + " Name: <input type = \"text\" name = \"student" + iter + "\"> <br>";
+		append = "Student " + iter + " Name: <input class=\"form_field\" type = \"text\" name = \"student" + iter + "\"> <br>";
 		div.innerHTML = div.innerHTML + append;
 		iter = iter + 1;
     });
 	    $("#moreAdvisors").click(function(){
-		append = "Advisor " + iter2 + " Name: <input type = \"text\" name = \"advisor" + iter2 + "\"> <br>";
+		append = "Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name = \"advisor" + iter2 + "\"> <br>";
 		div2.innerHTML = div2.innerHTML + append;
 		iter2 = iter2 + 1;
     });

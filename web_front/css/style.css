@@ -92,8 +92,7 @@ margin-left: auto;
   transition: box-shadow 0.3s;
 }
 
-.form_field input[type="text"]:focus,
-.form_field input[type="text"].focus {
+.form_field input[type="text"]:focus{
       box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 } 
 
