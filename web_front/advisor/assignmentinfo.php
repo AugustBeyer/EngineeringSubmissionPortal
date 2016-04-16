@@ -178,7 +178,7 @@ function printEditAssignmentDetail($i, $j)
 {
 
 
-    $EditAssignmentHTML = <<< EAHTML 
+/*    $EditAssignmentHTML = <<< EAHTML 
     <h1>Edit an Assignment</h1>
     Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
     Due date: *<input type = "date" name = "due_date"> <br><br>
@@ -188,7 +188,7 @@ function printEditAssignmentDetail($i, $j)
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
     Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
-EAHTML
+EAHTML */
 
 
 
@@ -196,7 +196,7 @@ EAHTML
     global $assignment_info_array;
     $current_assignment = $assignment_info_array[$i][$j];
 
-    echo "<h1>Edit an Assignment</h1>"
+    echo "<h1>Edit an Assignment</h1>";
 
     //Assignment Name
     echo "Assignment Name: *<input type = \"text\" name = \"assignment_name\" value = \"" . $current_assignment["name"] . "\"<br><br>";
