@@ -15,8 +15,8 @@ if ($method == 'POST')
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
 
-//print_r($_POST);
-
+print_r($_POST);
+/*
 try 
 {
     
@@ -115,5 +115,5 @@ catch(PDOException $e)
 
 $dbh = null;
 
-
+*/
 ?>

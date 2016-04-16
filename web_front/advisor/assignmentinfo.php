@@ -211,11 +211,12 @@ EAHTML */
     echo "Point Total: *<input type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
 
     //Reference File
-    echo "Reference File: *<input class=\"newAssignmentButton\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
+    echo "Reference File: <input class=\"newAssignmentButton\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
 
     //Description
     echo "Description:*<br>";
     echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\">";
     echo $current_assignment["description"] . "</textarea><br>";
+
 }
 ?>
