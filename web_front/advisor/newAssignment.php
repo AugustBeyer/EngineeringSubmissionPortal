@@ -18,6 +18,7 @@ include "teaminfo.php";
     <link rel="stylesheet" type="text/css" href="../css/tables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script type="text/javascript" src="../js/advisor.js"></script>
+   <script type="text/javascript" src="../js/file.js"></script>
 <script type="text/javascript" src="../js/autoScroll.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
 </head>
@@ -59,7 +60,7 @@ include "teaminfo.php";
     Assign to teams: * <br><br>
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
-	Reference file: <input class="form_hidden" type="file" name="fileToUpload" id="fileToUpload" data-multiple-caption="{count} files selected" multiple ><label for="fileToUpload">Choose a file</label> <br><br>
+	Reference file: <input class="inputfile" type="file" name="fileToUpload" id="fileToUpload" data-multiple-caption="{count} files selected" multiple /><label for="fileToUpload">Choose a file</label> <br><br>
 	
     </form>
         Description:*<br>
