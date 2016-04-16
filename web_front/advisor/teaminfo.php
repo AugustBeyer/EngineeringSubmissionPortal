@@ -43,7 +43,6 @@ try
         $students_name_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         array_push($student_name_array, $students_name_result);
     }
-    print_r($team_id_array);
 }
 catch(PDOException $e)
 {
@@ -122,6 +121,12 @@ function printTeamInfo($i)
     global $student_name_array;
     global $team_id_array;
 
+    for ($k = 0; $k < count($team_id_array); $k++)
+    {
+        if(isset($team_id_array[$k]))
+            array_push($not_null_team_id_array, $team_id_array[$k]);
+    }
+
     echo "<h4>Student Team Members:</h4>";
     //echo "<ul class=\"studentTeamList\">";
     for ($j=0; $j < count($student_name_array[$i]); $j++) { 
@@ -130,7 +135,7 @@ function printTeamInfo($i)
     //echo "</ul>";
     echo "<br>";
     print_r($team_id_array);
-    echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $team_id_array[$i] . "\">Edit This Team</a></button>";
+    echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $not_null_team_id_array[$i] . "\">Edit This Team</a></button>";
 }
 
 ?>
