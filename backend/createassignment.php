@@ -14,10 +14,9 @@ if ($method == 'POST')
     $teams_array = $_POST["teams"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
-print_r($teams_array);
-print_r($_POST);
 
-/*
+//print_r($_POST);
+
 try 
 {
     
@@ -115,6 +114,6 @@ catch(PDOException $e)
 }
 
 $dbh = null;
-*/
+
 
 ?>
