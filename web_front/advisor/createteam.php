@@ -78,7 +78,10 @@ include "teaminfo.php";
 	Student 2 Name: <input type = "text" name = "student2"> <br>
 	Student 3 Name: <input type = "text" name = "student3"> <br>
     </div>
+    <div id = "appendAdvisorsHere">
+    </div>
     <button id="moreStudents" class="form_button">Add more students</button>
+     <button id="moreAdvisors" class="form_button">Add another advisor</button>
 	<input type = "submit" value = "submit">
     </form>
 </div> 
