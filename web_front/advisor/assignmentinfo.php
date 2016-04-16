@@ -203,7 +203,7 @@ function printEditAssignmentDetail($i, $j)
     echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\">";
     echo $current_assignment["description"] . "</textarea><br>";
 
-    echo "</form>"
+    echo "</form>";
         echo "<p style=\"font-size: 8pt;\"><i>a * indicates a required field</i></p>";
         echo "<br>";
     echo "<input type = \"submit\" value = \"update\" form=\"usrform\">";
