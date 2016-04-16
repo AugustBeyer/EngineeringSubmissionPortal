@@ -158,7 +158,7 @@ function printAssignmentDetail($i, $j)
 
         echo "<form action=\"../../backend/downloadfile.php?tid=" . $current_assignment["assignment_team_id"] . "&name=" . $current_assignment["reference_file_name"] . "\" method=\"post\" enctype=\"multipart/form-data\">";
         echo "<p>Download file</p>";
-        echo "<input class=\"newAssignmentButton\" type=\"submit\" name=\"Download\" value=\"Download\" >";
+        echo "<input class=\"form_button\" type=\"submit\" name=\"Download\" value=\"Download\" >";
         echo "</form>";
     }
 
@@ -170,7 +170,7 @@ function printAssignmentDetail($i, $j)
 
         echo "<form action=\"../../backend/downloadfile.php?tid=" . $current_assignment["assignment_team_id"] . "&name=" . $current_assignment["submitted_file_name"] . "\" method=\"post\" enctype=\"multipart/form-data\">";
         echo "<p>Download file</p>";
-        echo "<input class=\"newAssignmentButton\" type=\"submit\" name=\"Download\" value=\"Download\" >";
+        echo "<input class=\"form_button\" type=\"submit\" name=\"Download\" value=\"Download\" >";
         echo "</form>";
     }
 }
