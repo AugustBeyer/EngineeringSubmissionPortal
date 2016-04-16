@@ -99,7 +99,7 @@ try
     $stmt -> execute();
 
     echo "New records created successfully\r\n";
-    header('Location: ../web_front/advisor/home.php');
+    //header('Location: ../web_front/advisor/home.php');
 }
 catch(PDOException $e)
 {
