@@ -74,7 +74,7 @@ $j = htmlspecialchars($_GET["index2"]);
 <div id="assignments" class="contentbox">
         <?php
         printAssignmentDetail($i, $j);
-        echo "<a href=editassignment.php?index1=" . $i;
+        echo "<a href=editAssignment.php?index1=" . $i;
         echo "&index2=". $j . ">";
         echo "<input class=\"form_button\" value =\"edit this assignment\" type=\"button\">"; 
         echo "</a>";
