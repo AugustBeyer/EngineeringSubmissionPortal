@@ -120,6 +120,7 @@ function printTeamInfo($i)
     global $project_name_array;
     global $student_name_array;
     global $team_id_array;
+    $not_null_team_id_array = array();
 
     for ($k = 0; $k < count($team_id_array); $k++)
     {
@@ -134,7 +135,6 @@ function printTeamInfo($i)
     }
     //echo "</ul>";
     echo "<br>";
-    print_r($team_id_array);
     echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $not_null_team_id_array[$i] . "\">Edit This Team</a></button>";
 }
 
