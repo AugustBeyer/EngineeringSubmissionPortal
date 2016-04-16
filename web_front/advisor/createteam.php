@@ -17,7 +17,7 @@ include "teaminfo.php";
     <link rel="stylesheet" type="text/css" href="../css/advisor.css">
     <link rel="stylesheet" type="text/css" href="../css/tables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/student.js"></script>
+  <script type="text/javascript" src="../js/advisor.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
     <script type="text/javascript" src="../js/konami.js"></script>
     <script type="text/javascript">
@@ -73,9 +73,12 @@ include "teaminfo.php";
 
     	<form action="../../backend/createteam.php" method="post">
 	Team Name: <input type = "text" name = "Teamname"> <br>
+    <div id = "appendHere">
 	Student 1 Name: <input type = "text" name = "student1"> <br>
 	Student 2 Name: <input type = "text" name = "student2"> <br>
 	Student 3 Name: <input type = "text" name = "student3"> <br>
+    </div>
+    <button id="moreStudents" class="form_button">Add more students</button>
 	<input type = "submit" value = "submit">
     </form>
 </div> 
