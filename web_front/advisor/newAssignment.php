@@ -55,8 +55,8 @@ include "teaminfo.php";
 	Due date: *<input type = "date" name = "due_date"> <br><br>
     Due time: *<input type = "time" name="due_time"> <br><br>    
     Point total: <input type = "number" name = "point_total"> <br><br>
-    Assign to teams: * <br>
-    Assign to all teams: <input type="checkbox" onclick="checkAll(this)"><br>
+    Assign to teams: * <br><br>
+    all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
 	Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
 	
