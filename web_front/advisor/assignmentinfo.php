@@ -213,7 +213,7 @@ EAHTML */
     //Assignment Description
     echo "Assign to teams: * <br><br>";
     echo "all teams: <input type=\"checkbox\" onclick=\"checkAll(this)\"><br>";
-    echo "<!--<input type = \"text\" name=\"Teamname\"> -->". printTeamCheckboxes(); ."<br><br>";
+    echo "<!--<input type = \"text\" name=\"Teamname\"> -->". printTeamCheckboxes() ."<br><br>";
 
     //Reference File
     echo "Point Total: *<input class=\"newAssignmentButton\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
