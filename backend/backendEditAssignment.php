@@ -13,11 +13,8 @@ if ($method == 'POST')
     $point_total = $_POST["point_total"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
-/*
+
 $aid = htmlspecialchars($_GET["aid"]);
-print_r($_POST);
-echo $aid;
-*/
 try 
 {
 
