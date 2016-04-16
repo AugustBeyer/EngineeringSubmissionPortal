@@ -119,7 +119,7 @@ body {
     margin-top: 0px;
 }
 
-.form_button a:hover
+.form_button:hover a
 {
     color: #fff;
 }
