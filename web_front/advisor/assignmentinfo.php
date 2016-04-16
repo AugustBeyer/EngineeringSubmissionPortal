@@ -197,7 +197,7 @@ function printEditAssignmentDetail($i, $j)
     echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
 
     //Reference File
-    echo "Reference File: <input class=\"newAssignmentButton\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
+    echo "Reference File: <input class=\"form_file\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
 
     //Description
     echo "Description:*<br>";
@@ -215,7 +215,7 @@ function deleteAssignment($i, $j)
 {
     global $assignment_info_array;
     $current_assignment = $assignment_info_array[$i][$j];
-
+    echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/advisor.css\">";
     echo "<p>Are you sure you want to delete this assignment</p>";
     echo "<form action=\"../../backend/backendDeleteAssignment.php?aid=". $current_assignment["primary_assignment_id"] ."\" method=\"post\" id=\"usrform\" enctype=\"multipart/form-data\">";
     echo "</form>";
