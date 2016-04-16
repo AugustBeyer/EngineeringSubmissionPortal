@@ -119,12 +119,14 @@ body {
     margin-top: 0px;
 }
 
-.form_button a:link
-{}
-.form_button a:visited
-{}
-.form_button a:active 
-{}
+.form_button a:hover
+{
+    color: #fff;
+}
+.form_button a
+{
+    color: #707070;
+}
 
 /*  links */
  a:link {
