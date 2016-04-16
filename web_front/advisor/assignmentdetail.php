@@ -77,6 +77,9 @@ include "assignmentinfo.php";
    <a href="editAssignment.php">
 <input class="form_button" value ="edit this assignment" type="button"> 
 </a>
+   <a href="deleteAssignment();" onclick = "return confirm('Are you sure you would like to delete this assignment?');">
+<input class="form_button" value ="delete this assignment" type="button"> 
+</a>
 
     
     <!-- Assignment Template -->
