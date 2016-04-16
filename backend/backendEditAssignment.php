@@ -29,7 +29,7 @@ try
 
     $reference_file_location = $stmt->fetch(PDO::FETCH_ASSOC)["reference_location"];
 
-    if(isset($reference_file_name))
+    if(!empty($reference_file_name))
     {
         $target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
