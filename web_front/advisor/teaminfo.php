@@ -10,6 +10,7 @@ require "../../backend/db_config.php";
 $advisor_id = $_SESSION["user_id"];
 $project_name_array = array();
 $student_name_array = array();
+$team_id_array = array();
 
 try 
 {
