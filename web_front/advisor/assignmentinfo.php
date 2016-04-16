@@ -210,4 +210,16 @@ function printEditAssignmentDetail($i, $j)
     echo "<input type = \"submit\" value = \"update\" form=\"usrform\">";
 
 }
+
+function deleteAssignment($i, $j)
+{
+    global $assignment_info_array;
+    $current_assignment = $assignment_info_array[$i][$j];
+
+    echo "<p>Are you sure you want to delete this assignment</p>";
+    echo "<form action=\"../../backend/backendDeleteAssignment.php?aid=". $current_assignment["primary_assignment_id"] ."\" method=\"post\" id=\"usrform\" enctype=\"multipart/form-data\">";
+    echo "</form>";
+    echo "<input type = \"submit\" value = \"update\" form=\"usrform\">";
+}
+
 ?>
