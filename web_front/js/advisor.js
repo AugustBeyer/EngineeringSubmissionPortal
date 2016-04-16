@@ -18,7 +18,14 @@ $(document).ready(function(){
 		iter = iter + 1;
     });
 	    $("#moreAdvisors").click(function(){
-		append = "Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+				if(iter2 == 1)
+				{
+						append = "<br>Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+				}
+				else
+				{
+						append = "Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+				}
 		div2.innerHTML = div2.innerHTML + append;
 		iter2 = iter2 + 1;
     });
