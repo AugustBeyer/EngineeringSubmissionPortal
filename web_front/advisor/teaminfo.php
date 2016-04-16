@@ -19,25 +19,25 @@ try
     $stmt = $dbh->prepare("SELECT junction_team_id FROM teams_advisors_junction WHERE junction_advisor_id = :advisor_id");
     $stmt->bindParam(':advisor_id', $advisor_id);
     $stmt -> execute();
-    $result = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $team_id_array = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-    for ($i=0; $i < count($result); $i++) 
+    for ($i=0; $i < count($team_id_array); $i++) 
     {
 
         //check if result is null
-        if(is_null($result[$i]))
+        if(is_null($team_id_array[$i]))
             continue;
 
         //Get project_name using junction_team_id from teams table
         $stmt = $dbh->prepare("SELECT project_name FROM teams WHERE primary_team_id = :team_id");
-        $stmt->bindParam(':team_id', $result[$i]);
+        $stmt->bindParam(':team_id', $team_id_array[$i]);
         $stmt -> execute();
         $project_name_result = $stmt->fetch(PDO::FETCH_ASSOC);
         array_push($project_name_array, $project_name_result["project_name"]);
 
         //Get scu_username array using junction_team_id from students table
         $stmt = $dbh->prepare("SELECT scu_username FROM students WHERE students_team_id = :team_id");
-        $stmt->bindParam(':team_id', $result[$i]);
+        $stmt->bindParam(':team_id', $team_id_array[$i]);
         $stmt -> execute();
         $students_name_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         array_push($student_name_array, $students_name_result);
@@ -118,6 +118,7 @@ function printTeamInfo($i)
 {
     global $project_name_array;
     global $student_name_array;
+    global $team_id_array;
 
     echo "<h4>Student Team Members:</h4>";
     //echo "<ul class=\"studentTeamList\">";
@@ -126,7 +127,7 @@ function printTeamInfo($i)
     }
     //echo "</ul>";
     echo "<br>";
-     echo "<button class=\"form_button\"><a href=\"editTeam.php\">Edit This Team</a></button>";
+     echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $team_id_array[$i] . "\">Edit This Team</a></button>";
 }
 
 ?>
