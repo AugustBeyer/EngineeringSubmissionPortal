@@ -173,4 +173,83 @@ function printAssignmentDetail($i, $j)
         echo "</form>";
     }
 }
+
+function printEditAssignmentDetail($i, $j)
+{
+
+
+    $EditAssignmentHTML = <<< EAHTML 
+    <h1>Edit an Assignment</h1>
+    Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
+    Due date: *<input type = "date" name = "due_date"> <br><br>
+    Due time: *<input type = "time" name="due_time"> <br><br>    
+    Point total: <input type = "number" name = "point_total"> <br><br>
+    Assign to teams: * <br><br>
+    all teams: <input type="checkbox" onclick="checkAll(this)"><br>
+     <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
+    Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
+EAHTML
+
+
+
+
+    global $assignment_info_array;
+    $current_assignment = $assignment_info_array[$i][$j];
+
+    echo "<h1>Edit an Assignment</h1>"
+
+    //Assignment Name
+    echo "Assignment Name: *<input type = \"text\" name = \"assignment_name\" value = \"" . $current_assignment["name"] . "\"<br><br>";
+
+    //Due Date
+    echo "<p>Due Date: <i>" . $current_assignment["due_date"] . "</i></p>";
+    
+    //Submitted date
+    if (is_null($current_assignment["submitted_time"]))
+        echo "<p>Submitted on: <i>---</i></p>";
+    else
+        echo "<p>Submitted on: <i>" . $current_assignment["submitted_time"] . "</i></p>";
+    
+    //Grade
+    if(is_null($current_assignment["point_total"]))
+        echo "<p>Grade: <i>---</i></p>";
+    else
+        echo "<p>Grade: <i>" . $current_assignment["point_total"] . "</i></p>";
+
+    //Assignment Description
+    echo "<br>";
+    echo "<h3>Assignment Description</h3>";
+    echo "<hr class= \"detailLine\">";
+    echo "<p class= \"assignDetail\">". $current_assignment["description"];
+
+    /*
+    echo "<h3>Additional Files</h3>";
+    echo "<hr class=\"detailLine\">";
+    echo "<br>";
+    */
+
+    //If advisor included a reference file display it here for download
+    if (!empty(($current_assignment["reference_file_name"])))
+    {
+        echo "<h3>Download Reference</h3>";
+        echo "<hr class=\"detailLine\">"; 
+
+        echo "<form action=\"../../backend/downloadfile.php?tid=" . $current_assignment["assignment_team_id"] . "&name=" . $current_assignment["reference_file_name"] . "\" method=\"post\" enctype=\"multipart/form-data\">";
+        echo "<p>Download file</p>";
+        echo "<input class=\"newAssignmentButton\" type=\"submit\" name=\"Download\" value=\"Download\" >";
+        echo "</form>";
+    }
+
+    //If assignment has been submitted display it here for download
+    if (!(empty($current_assignment["submitted_file_name"])))
+    {
+        echo "<h3>Download Deliverable</h3>";
+        echo "<hr class=\"detailLine\">"; 
+
+        echo "<form action=\"../../backend/downloadfile.php?tid=" . $current_assignment["assignment_team_id"] . "&name=" . $current_assignment["submitted_file_name"] . "\" method=\"post\" enctype=\"multipart/form-data\">";
+        echo "<p>Download file</p>";
+        echo "<input class=\"newAssignmentButton\" type=\"submit\" name=\"Download\" value=\"Download\" >";
+        echo "</form>";
+    }
+}
 ?>
