@@ -45,13 +45,13 @@ include "teaminfo.php";
 </div>
 
 <div id="mainPageWrapper">
-<h1>Create an Assignment</h1>
 <!--Settings-->
 <div id="settings" class="contentbox">
     <div id="formCenter">
         <br>
     <form action="../../backend/createassignment.php" method="post" id="usrform" enctype="multipart/form-data">
-	Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
+	<h1>Create an Assignment</h1>
+    Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
 	Due date: *<input type = "date" name = "due_date"> <br><br>
     Due time: *<input type = "time" name="due_time"> <br><br>    
     Point total: <input type = "number" name = "point_total"> <br><br>
