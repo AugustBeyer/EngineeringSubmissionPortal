@@ -185,7 +185,7 @@ function printEditAssignmentDetail($i, $j)
     echo "<h1>Edit an Assignment</h1>";
 
     //Assignment Name
-    echo "Assignment Name: *<input class=\"form_field\" type = \"text\" name = \"assignment_name\" value = \"" . $current_assignment["name"] . "\"<br><br>";
+    echo "Assignment Name: *<input class=\"form_field\" type = \"text\" name = \"assignment_name\" value = \"" . $current_assignment["name"] . "\"><br><br>";
 
     //Due Date
     echo "Due Date: *<input class=\"form_field\" type = \"date\" name = \"due_date\"value = \"" . $current_assignment["due_date"] . "\"> <br><br>";
