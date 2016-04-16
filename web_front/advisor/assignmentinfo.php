@@ -176,25 +176,10 @@ function printAssignmentDetail($i, $j)
 
 function printEditAssignmentDetail($i, $j)
 {
-
-
-/*    $EditAssignmentHTML = <<< EAHTML 
-    <h1>Edit an Assignment</h1>
-    Assignment Name: *<input type = "text" name = "assignment_name"> <br><br>
-    Due date: *<input type = "date" name = "due_date"> <br><br>
-    Due time: *<input type = "time" name="due_time"> <br><br>    
-    Point total: <input type = "number" name = "point_total"> <br><br>
-    Assign to teams: * <br><br>
-    all teams: <input type="checkbox" onclick="checkAll(this)"><br>
-     <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
-    Reference file: <input class="newAssignmentButton" type="file" name="fileToUpload" id="fileToUpload"> <br><br>
-EAHTML */
-
-
-
-
     global $assignment_info_array;
     $current_assignment = $assignment_info_array[$i][$j];
+
+    echo "<form action=\"../../backend/backendEditAssignment.php?aid=". $current_assignment["primary_assignment_id"] ."\" method=\"post\" id=\"usrform\" enctype=\"multipart/form-data\">";
 
     echo "<h1>Edit an Assignment</h1>";
 
@@ -217,6 +202,11 @@ EAHTML */
     echo "Description:*<br>";
     echo "<textarea rows=\"4\" cols=\"50\" name=\"description\" form=\"usrform\">";
     echo $current_assignment["description"] . "</textarea><br>";
+
+    echo "</form>"
+        echo "<p style=\"font-size: 8pt;\"><i>a * indicates a required field</i></p>";
+        echo "<br>";
+    echo "<input type = \"submit\" value = \"update\" form=\"usrform\">";
 
 }
 ?>

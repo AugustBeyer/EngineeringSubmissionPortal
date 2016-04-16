@@ -54,13 +54,7 @@ $j = htmlspecialchars($_GET["index2"]);
 <div id="settings" class="contentbox">
     <div id="formCenter">
         <br>
-    <form action="../../backend/backendEditAssignment.php" method="post" id="usrform" enctype="multipart/form-data">
 	<?php printEditAssignmentDetail($i, $j); ?>
-	
-    </form>
-        <p style="font-size: 8pt;"><i>a * indicates a required field</i></p>
-        <br>
-    <input type = "submit" value = "update" form="usrform">
     </div>
     </div>
 
