@@ -64,7 +64,7 @@ include "teaminfo.php";
 	
     </form>
         Description:*<br>
-    <textarea rows="4" cols="50" name="description" form="usrform">
+    <textarea rows="4" cols="50" name="description" form="usrform" class="form_field">
 Enter description here...</textarea><br>
         <p style="font-size: 8pt;"><i>a * indicates a required field</i></p>
         <br>
