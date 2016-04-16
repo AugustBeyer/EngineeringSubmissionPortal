@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../js/advisor.js"></script>
 <?php 
 if (!isset($_SESSION))
     session_start();
