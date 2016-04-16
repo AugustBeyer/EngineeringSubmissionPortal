@@ -438,7 +438,7 @@ text-align: center;
 }
 
 .form_field{ 
-  padding: 10px;
+  padding: 5pt;
   border: solid 1px #fff;
   box-shadow: inset 1px 1px 2px 0 #707070;
   transition: box-shadow 0.3s;
@@ -462,6 +462,7 @@ text-align: center;
   border: solid 1px #fff;
   box-shadow: inset 1px 1px 2px 0 #707070;
   transition: box-shadow 0.3s;
+  cursor: pointer; /* "hand" cursor */
 }
 
 .form_hidden:focus + label,
