@@ -69,6 +69,7 @@ include "assignmentinfo.php";
 <!--Assignments-->
 <br><br><br>
 <div id="assignments" class="contentbox">
+    <input formaction="editAssignment.php" class="form_button" value ="edit this assignment" type="button"> 
     <?php
         $i = htmlspecialchars($_GET["index1"]);
         $j = htmlspecialchars($_GET["index2"]);

@@ -418,3 +418,21 @@ ul {
 #teams {
 text-align: center;
 }
+
+.form_button:hover {
+     background-color: #707070;
+    color: #fff;
+    border: solid 1px #fff;
+}
+.form_button {
+    display: inline-block;
+    border: solid 1px #707070;
+    padding: 7px 18px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1em;
+    background-color: #fff;
+    color: #707070;
+    
+    
+}
