@@ -107,6 +107,4 @@ catch(PDOException $e)
 }
 
 $dbh = null;
-
-*/
 ?>
