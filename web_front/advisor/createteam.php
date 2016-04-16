@@ -77,10 +77,9 @@ include "teaminfo.php";
 	Student 1 Name: <input class="form_field" type = "text" name = "students[]"> <br>
     </div>
     <div id = "appendAdvisorsHere">
-    Advisor 1 (Your) Name: <input class="form_field" type = "text" name = "adivisors[]"> <br>
     </div>
-    <button id="moreStudents" class="form_button">Add more students</button>
-    <button id="moreAdvisors" class="form_button">Add another advisor</button>
+    <button type="button" id="moreStudents" class="form_button">Add more students</button>
+    <button type="button" id="moreAdvisors" class="form_button">Add another advisor</button>
 	<br><input type = "submit" value = "submit" class="form_button">
     </form>
 </div> 
