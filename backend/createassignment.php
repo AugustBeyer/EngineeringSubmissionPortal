@@ -15,10 +15,13 @@ if ($method == 'POST')
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
 
-try {
+try 
+{
+    
     if(!empty($teams_array))
     {
-        for ($i=0; $i < count($teams_array); $i++) { 
+        for ($i=0; $i < count($teams_array); $i++) 
+        { 
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             //get id from teams table
@@ -101,12 +104,13 @@ try {
             echo "New records created successfully\r\n";
         }
     }
-    header('Location: ../web_front/advisor/home.php'); //FuckPHP5
-    }
+    //header('Location: ../web_front/advisor/home.php'); //FuckPHP5
+    header('Location: ../web_front/advisor/dasdasas.php');
+}
 catch(PDOException $e)
-    {
+{
     echo "Error: " . $e->getMessage();
-    }
+}
 
 $dbh = null;
 
