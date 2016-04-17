@@ -169,7 +169,7 @@ function editTeamForm($i)
     echo "<div id =\"appendAdvisorsHere\">";
     for ($j=0; $j < count($advisors_id_results); $j++) 
     { 
-        $stmt = $dbh->prepare("SELECT advisor_username FROM teams WHERE primary_advisor_id = :primary_advisor_id");
+        $stmt = $dbh->prepare("SELECT advisor_username FROM advisors WHERE primary_advisor_id = :primary_advisor_id");
         $stmt->bindParam(':primary_advisor_id', $j);
         $stmt->execute();
         $advisor_name_result = $stmt->fetch(PDO::FETCH_COLUMN);
