@@ -156,7 +156,7 @@ function editTeamForm($i)
     $advisors_name_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
     echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
-    echo "<div id = "appendHerePlease">";
+    echo "<div id =\"appendHerePlease\">";
     echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
 
     for ($j=0; $j < count($students_name_results); $j++) 
@@ -165,11 +165,11 @@ function editTeamForm($i)
     }
     
     echo "</div>";
-    echo "<div id = "appendAdvisorsHere">";
+    echo "<div id =\"appendAdvisorsHere\">";
     echo "</div>";
-    echo "<button type="button" id="moreStudents" class="form_button">Add more students</button>";
-    echo "<button type="button" id="moreAdvisors" class="form_button">Add another advisor</button>";
-    echo "<br><input type = "submit" value = "submit" class="form_button">";
+    echo "<button type=\"button\" id=\"moreStudents\" class=\"form_button\">Add more students</button>";
+    echo "<button type=\"button\" id=\"moreAdvisors\" class=\"form_button\">Add another advisor</button>";
+    echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
     echo "<form>";
 }
 
