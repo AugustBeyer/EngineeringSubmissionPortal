@@ -138,4 +138,39 @@ function printTeamInfo($i)
     echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $not_null_team_id_array[$i] . "\">Edit This Team</a></button>";
 }
 
+function editTeamForm($i)
+{
+    $stmt = $dbh->prepare("SELECT project_name FROM teams WHERE primary_team_id = :team_id");
+    $stmt->bindParam(':team_id', $i);
+    $stmt->execute();
+    $project_name_result = $stmt->fetch(PDO::FETCH_ASSOC)["project_name"];
+
+    $stmt = $dbh->prepare("SELECT scu_username FROM students WHERE students_team_id = :team_id");
+    $stmt->bindParam(':team_id', $i);
+    $stmt->execute();
+    $students_name_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
+    $stmt->bindParam(':junction_team_id', $i);
+    $stmt->execute();
+    $advisors_name_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
+    echo "<div id = "appendHerePlease">";
+    echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
+
+    for ($j=0; $j < count($students_name_results); $j++) 
+    { 
+        echo "Student " . $j . " Name: <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
+    }
+    
+    echo "</div>";
+    echo "<div id = "appendAdvisorsHere">";
+    echo "</div>";
+    echo "<button type="button" id="moreStudents" class="form_button">Add more students</button>";
+    echo "<button type="button" id="moreAdvisors" class="form_button">Add another advisor</button>";
+    echo "<br><input type = "submit" value = "submit" class="form_button">";
+    echo "<form>";
+}
+
 ?>
