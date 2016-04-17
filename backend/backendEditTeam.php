@@ -26,13 +26,45 @@ try {
     $stmt->bindParam(':project_name', $tid);
     $stmt->execute();
 
-    $stmt = $dbh->prepare("INSERT INTO teams_advisors_junction (junction_team_id, junction_advisor_id)
-    VALUES (:junction_team_id, :junction_advisor_id)");
-    $stmt->bindParam(':junction_team_id', $team_id);
-    $stmt->bindParam(':junction_advisor_id', $advisor_id);
-    $stmt->execute();
+    //Delete existing advisor from team
+    for ($i=0; $i < count($oldadvisors); $i++) 
+    { 
+        //Name was checked - don't delete
+        if(array_count_values($oldadvisors[$i]) == 2)
+        {
+            continue;
+        }
+        else
+        {
+            $stmt = $dbh->prepare("SELECT primary_advisor_id FROM advisors WHERE advisor_username = :advisor_username");
+            $stmt->bindParam(':advisor_username', $oldadvisors[$i]);
+            $stmt->execute();
+            $additional_advisor_id = $stmt->fetch(PDO::FETCH_COLUMN);
 
-    if(!empty($advisors))
+            $stmt = $dbh->prepare("DELETE FROM teams_advisors_junction WHERE junction_advisor_id = :junction_advisor_id AND junction_team_id = :junction_team_id");
+            $stmt->bindParam(':junction_advisor_id', $additional_advisor_id);
+            $stmt->bindParam(':junction_team_id', $tid);
+            $stmt->execute();
+        }
+    }
+
+    //Delete existing student from team
+    for ($i=0; $i < count($oldstudents); $i++) 
+    { 
+        //Name was checked - don't delete
+        if(array_count_values($oldstudents[$i]) == 2)
+        {
+            continue;
+        }
+        else
+        {
+            $stmt = $dbh->prepare("UPDATE students SET students_team_id = :students_team_id WHERE scu_username = :scu_username");
+            $stmt->bindParam(':students_team_id', NULL);
+            $stmt->execute();
+        }
+    }
+
+    if(!empty($_POST["advisors"]))
     {
         for ($i=0; $i < count($advisors); $i++)
         {
@@ -51,7 +83,7 @@ try {
     }
 
     //insert entry in students table that has student id, team id
-    if(!empty($students))
+    if(!empty($_POST["students"]))
     {
         for ($i=0; $i < count($students); $i++) 
         { 
