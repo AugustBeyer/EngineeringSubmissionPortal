@@ -11,24 +11,21 @@ if ($method == 'POST')
     $project_name = $_POST["Teamname"];
     $oldstudents = $_POST["oldstudents"];
     $oldadvisors = $_POST["oldadvisors"];
+    if (!empty($_POST["students"]))
+        $students = $_POST["students"];
+    if (!empty($_POST["advisors"]))
+        $advisors = $_POST["advisors"];
 }
 
-print_r($_POST);
+$tid = htmlspecialchars($_GET["tid"]);
 
-/*
 try {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    //insert entry into teams table
-    $stmt = $dbh->prepare("INSERT INTO teams (project_name, cumulative_grade)
-VALUES (:project_name, :cumulative_grade)");
-    $stmt->bindParam(':project_name', $project_name);
-    $stmt->bindParam(':cumulative_grade', $cumulative_grade);
-    $cumulative_grade = NULL;
+    $stmt = $dbh -> prepare("UPDATE teams SET project_name = :project_name WHERE primary_team_id = :primary_team_id");
+    $stmt->bindParam(':project_name', $tid);
     $stmt->execute();
 
-    $team_id = $dbh->lastInsertId(); //May create race condition?
-    //insert entry in junction table that has advisor id, team id
     $stmt = $dbh->prepare("INSERT INTO teams_advisors_junction (junction_team_id, junction_advisor_id)
     VALUES (:junction_team_id, :junction_advisor_id)");
     $stmt->bindParam(':junction_team_id', $team_id);
@@ -65,9 +62,6 @@ VALUES (:project_name, :cumulative_grade)");
         }
     }
 
-    //create new directory for the team
-    mkdir($current_year_path . $team_id, 0777);
-
     echo "New records created successfully\r\n";
     header('Location: ../web_front/advisor/home.php');
     }
@@ -77,5 +71,4 @@ catch(PDOException $e)
     }
 
 $dbh = null;
-*/
 ?>
