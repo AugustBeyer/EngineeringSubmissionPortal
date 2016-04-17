@@ -53,7 +53,7 @@ try {
     for ($i=0; $i < count($oldstudents); $i++) 
     { 
         //Name was checked - don't delete
-        if(array_count_values($oldstudents[$i])[$oldstudents[$i]] == 2)
+        if(array_count_values($oldstudents)[$oldstudents[$i]] == 2)
         {
             continue;
         }
