@@ -5,19 +5,20 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 {
     die("Unauthorized access. Please return to the login page.");
 }
-include "teaminfo.php"; 
+include "teaminfo.php";
+$i = htmlspecialchars($_GET["tid"]); 
 ?>
 
 <html lang="en">
 <head>
-  <title>Create A Team</title>
+  <title>Edit A Team</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/png" href="../images/logo.png">
     <link rel="stylesheet" type="text/css" href="../css/advisor.css">
     <link rel="stylesheet" type="text/css" href="../css/tables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/student.js"></script>
+  <script type="text/javascript" src="../js/advisor.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
     <script type="text/javascript" src="../js/konami.js"></script>
     <script type="text/javascript">
@@ -70,21 +71,7 @@ include "teaminfo.php";
 <!--Assignments-->
 <br><br>
 <div id="assignments" class="contentbox">
-
-    	<form action="../../backend/createteam.php" method="post">
-	<div id = "appendHerePlease">
-    Team Name: <input class="form_field" type = "text" name = "Teamname"> <br><br>
-    
-	Student 1 Name: <input class="form_field" type = "text" name = "student1"> <br>
-	Student 2 Name: <input  class="form_field" type = "text" name = "student2"> <br>
-	Student 3 Name: <input class="form_field" type = "text" name = "student3"> <br>
-    </div>
-    <div id = "appendAdvisorsHere">
-    </div>
-    <button id="moreStudents" class="form_button">Add more students</button>
-     <button id="moreAdvisors" class="form_button">Add another advisor</button>
-	<br><input type = "submit" value = "submit" class="form_button">
-    </form>
+    <?php editTeamForm($i); ?>
 </div> 
 
 <!-- main body wrapper div -->
