@@ -153,7 +153,7 @@ function editTeamForm($i)
     $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
     $stmt->bindParam(':junction_team_id', $i);
     $stmt->execute();
-    $advisors_name_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    $advisors_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
     echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
     
@@ -167,9 +167,14 @@ function editTeamForm($i)
     echo "</div>";
 
     echo "<div id =\"appendAdvisorsHere\">";
-    for ($j=0; $j < count($advisors_name_results); $j++) 
+    for ($j=0; $j < count($advisors_id_results); $j++) 
     { 
-        echo "Advisor " . $j+1 . " Name: " . $advisors_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisors_name_results[$j] ."\" checked><br>";
+        $stmt = $dbh->prepare("SELECT advisor_username FROM teams WHERE primary_advisor_id = :primary_advisor_id");
+        $stmt->bindParam(':primary_advisor_id', $j);
+        $stmt->execute();
+        $advisor_name_result = $stmt->fetch(PDO::FETCH_COLUMN);
+
+        echo "Advisor " . $j+1 . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
     }
     echo "</div>";
 

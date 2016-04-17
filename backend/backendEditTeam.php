@@ -9,8 +9,8 @@ if ($method == 'POST')
 {
     $advisor_id = $_SESSION["user_id"];
     $project_name = $_POST["Teamname"];
-    $students = $_POST["students"];
-    $advisors = $_POST["advisors"];
+    $oldstudents = $_POST["oldstudents"];
+    $oldadvisors = $_POST["oldadvisors"];
 }
 
 print_r($_POST);
