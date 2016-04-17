@@ -138,6 +138,8 @@ function printTeamInfo($i)
 
 function editTeamForm($i)
 {
+    global $dbh;
+
     $stmt = $dbh->prepare("SELECT project_name FROM teams WHERE primary_team_id = :team_id");
     $stmt->bindParam(':team_id', $i);
     $stmt->execute();
@@ -169,8 +171,8 @@ function editTeamForm($i)
     echo "<button type=\"button\" id=\"moreAdvisors\" class=\"form_button\">Add another advisor</button>";
     echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
     echo "<form>";
-}
 
-$dbh = null;
+    $dbh = null;
+}
 
 ?>
