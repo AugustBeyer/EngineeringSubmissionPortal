@@ -162,7 +162,8 @@ function editTeamForm($i)
 
     for ($j=0; $j < count($students_name_results); $j++) 
     { 
-        echo "Student " . $j+1 . " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
+        echo "Student " . $j+1;
+        echo " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
     }
     echo "</div>";
 
@@ -173,6 +174,7 @@ function editTeamForm($i)
         $stmt->bindParam(':primary_advisor_id', $j);
         $stmt->execute();
         $advisor_name_result = $stmt->fetch(PDO::FETCH_COLUMN);
+        print_r($advisor_name_result);
 
         echo "Advisor " . $j+1 . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
     }
