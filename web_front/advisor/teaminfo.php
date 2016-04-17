@@ -156,19 +156,25 @@ function editTeamForm($i)
     $advisors_name_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
     echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
+    
     echo "<div id =\"appendHerePlease\">";
     echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
 
     for ($j=0; $j < count($students_name_results); $j++) 
     { 
-        echo "Student " . $j . " Name: <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
+        echo "Student " . $j+1 . " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
     }
-    
     echo "</div>";
+
     echo "<div id =\"appendAdvisorsHere\">";
+    for ($j=0; $j < count($advisors_name_results); $j++) 
+    { 
+        echo "Advisor " . $j+1 . " Name: " . $advisors_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisors_name_results[$j] ."\" checked><br>";
+    }
     echo "</div>";
-    echo "<button type=\"button\" id=\"moreStudents\" class=\"form_button\">Add more students</button>";
-    echo "<button type=\"button\" id=\"moreAdvisors\" class=\"form_button\">Add another advisor</button>";
+
+    echo "<button type=\"button\" id=\"editMoreStudents\" class=\"form_button\">Add more students</button>";
+    echo "<button type=\"button\" id=\"editMoreAdvisors\" class=\"form_button\">Add another advisor</button>";
     echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
     echo "<form>";
 

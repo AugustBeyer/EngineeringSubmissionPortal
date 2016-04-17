@@ -30,3 +30,27 @@ $(document).ready(function(){
 		iter2 = iter2 + 1;
     });
 });
+
+$(document).ready(function(){
+	var div = document.getElementById('appendHerePlease');
+	var div2 = document.getElementById('appendAdvisorsHere');
+	var iter = 2;
+	var iter2 = 1;
+    $("#editMoreStudents").click(function(){
+		append = "New Student: <input class=\"form_field\" type = \"text\" name = \"students[]\"> <br>";
+		div.innerHTML = div.innerHTML + append;
+		iter = iter + 1;
+    });
+	    $("#editMoreAdvisors").click(function(){
+				if(iter2 == 1)
+				{
+						append = "<br>New Advisor Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+				}
+				else
+				{
+						append = "New Advisor Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+				}
+		div2.innerHTML = div2.innerHTML + append;
+		iter2 = iter2 + 1;
+    });
+});
