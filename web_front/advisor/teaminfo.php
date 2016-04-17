@@ -164,6 +164,7 @@ function editTeamForm($i)
     { 
         echo "Student " . $j+1;
         echo " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
+        echo "<input type=\"hidden\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\"><br>";
     }
     echo "</div>";
 
@@ -177,6 +178,7 @@ function editTeamForm($i)
        // print_r($advisor_name_result);
 
         echo "Advisor " . $j+1 . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
+        echo "<input type=\"hidden\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result . "\"><br>";
     }
     echo "</div>";
 
