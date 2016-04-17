@@ -61,6 +61,7 @@ try {
         {
             $null = NULL;
             $stmt = $dbh->prepare("UPDATE students SET students_team_id = :students_team_id WHERE scu_username = :scu_username");
+            $stmt->bindParam(':scu_username', $oldstudents[$i]);
             $stmt->bindParam(':students_team_id', $null);
             $stmt->execute();
         }
