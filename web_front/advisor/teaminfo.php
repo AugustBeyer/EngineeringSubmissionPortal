@@ -171,10 +171,10 @@ function editTeamForm($i)
     for ($j=0; $j < count($advisors_id_results); $j++) 
     { 
         $stmt = $dbh->prepare("SELECT advisor_username FROM advisors WHERE primary_advisor_id = :primary_advisor_id");
-        $stmt->bindParam(':primary_advisor_id', $j);
+        $stmt->bindParam(':primary_advisor_id', $advisors_id_results[$j]);
         $stmt->execute();
         $advisor_name_result = $stmt->fetch(PDO::FETCH_COLUMN);
-        print_r($advisor_name_result);
+       // print_r($advisor_name_result);
 
         echo "Advisor " . $j+1 . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
     }
