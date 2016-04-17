@@ -31,7 +31,7 @@ try {
     for ($i=0; $i < count($oldadvisors); $i++) 
     { 
         //Name was checked - don't delete
-        if(array_count_values($oldadvisors[$i]) == 2)
+        if(array_count_values($oldadvisors)[$oldadvisors[$i]] == 2)
         {
             continue;
         }
@@ -53,14 +53,15 @@ try {
     for ($i=0; $i < count($oldstudents); $i++) 
     { 
         //Name was checked - don't delete
-        if(array_count_values($oldstudents[$i]) == 2)
+        if(array_count_values($oldstudents[$i])[$oldstudents[$i]] == 2)
         {
             continue;
         }
         else
         {
+            $null = NULL
             $stmt = $dbh->prepare("UPDATE students SET students_team_id = :students_team_id WHERE scu_username = :scu_username");
-            $stmt->bindParam(':students_team_id', NULL);
+            $stmt->bindParam(':students_team_id', $null);
             $stmt->execute();
         }
     }
