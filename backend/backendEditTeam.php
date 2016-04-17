@@ -76,7 +76,7 @@ try {
 
             $stmt = $dbh->prepare("INSERT INTO teams_advisors_junction (junction_team_id, junction_advisor_id)
             VALUES (:junction_team_id, :junction_advisor_id)");
-            $stmt->bindParam(':junction_team_id', $team_id);
+            $stmt->bindParam(':junction_team_id', $tid);
             $stmt->bindParam(':junction_advisor_id', $additional_advisor_id);
             $stmt->execute();
         }
@@ -88,7 +88,7 @@ try {
         for ($i=0; $i < count($students); $i++) 
         { 
             $stmt = $dbh->prepare("UPDATE students SET students_team_id = :students_team_id WHERE scu_username = :scu_username");
-            $stmt->bindParam(':students_team_id', $team_id);
+            $stmt->bindParam(':students_team_id', $tid);
             $stmt->bindParam(':scu_username', $students[$i]);
             $stmt->execute();
         }
