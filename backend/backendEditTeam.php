@@ -23,7 +23,8 @@ try {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $stmt = $dbh -> prepare("UPDATE teams SET project_name = :project_name WHERE primary_team_id = :primary_team_id");
-    $stmt->bindParam(':project_name', $tid);
+    $stmt->bindParam(':project_name', $project_name);
+    $stmt->bindParam(':primary_team_id', $tid);
     $stmt->execute();
 
     //Delete existing advisor from team
