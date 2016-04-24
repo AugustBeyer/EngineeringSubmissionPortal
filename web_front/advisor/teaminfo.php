@@ -134,6 +134,7 @@ function printTeamInfo($i)
     //echo "</ul>";
     echo "<br>";
     echo "<button class=\"form_button\"><a href=\"editTeam.php?tid=". $not_null_team_id_array[$i] . "\">Edit This Team</a></button>";
+    echo "<button class=\"form_button\"><a href=\"deleteTeam.php?tid=". $not_null_team_id_array[$i] . "\">Delete This Team</a></button>";
 }
 
 function editTeamForm($i)
@@ -185,9 +186,17 @@ function editTeamForm($i)
     echo "<button type=\"button\" id=\"editMoreStudents\" class=\"form_button\">Add more students</button>";
     echo "<button type=\"button\" id=\"editMoreAdvisors\" class=\"form_button\">Add another advisor</button>";
     echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
-    echo "<form>";
+    echo "</form>";
 
     $dbh = null;
+}
+
+function deleteTeamForm($i)
+{
+    echo "<p>Are you sure you want to delete this Team?</p>";
+    echo "<form action=\"../../backend/backendDeleteTeam.php?tid=" . $i . "\" method=\"post\">";
+    echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
+    echo "</form>";
 }
 
 ?>
