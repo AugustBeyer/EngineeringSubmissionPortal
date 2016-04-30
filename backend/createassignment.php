@@ -133,7 +133,6 @@ try
                 $advisor_teams = array();
                 $advisor_teams = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-                print_r($advisor_teams);
                 for($j = 0; $j < count($advisor_teams); $j++)
                 {
                     if ($advisor_teams[$j] == $assignment_team_id)
@@ -167,7 +166,7 @@ try
                 $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index_2;
                 $notification_student_id = $notification_student_ids[$i];
                 $notification_due_date = NULL;
-                $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_hyperlink, notification_advisor_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_hyperlink, :notification_advisor_id, :notification_due_date)");
+                $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_hyperlink, notification_student_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_hyperlink, :notification_student_id, :notification_due_date)");
                 $stmt->bindParam(':notification_title', $notification_title);
                 $stmt->bindParam(':notification_text', $notification_text);
                 $stmt->bindParam(':notification_hyperlink', $notification_hyperlink);
