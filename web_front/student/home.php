@@ -82,35 +82,13 @@ include "teaminfo.php";
     <br><br><br><br>
         <p class="titleStyle">Notifications</p>
     <hr>
-    <ul>
-        <li  id="notif1">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif1');">x</a></p>
-            </div>
-        </li>   
-        <li  id="notif2">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif2');">x</a></p>
-            </div>
-        </li>   
-        <li  id="notif3">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif3');">x</a></p>
-            </div>
-        </li>   
-    </ul>  
+
+    <?php
+
+        displayStudentNotifcations();
+
+    ?>
+    
     </div>
     </body>
 </html>
