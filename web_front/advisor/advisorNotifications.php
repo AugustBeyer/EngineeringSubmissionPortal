@@ -16,7 +16,7 @@ try
 
     //Get all notifications for student, ordered by creation date
     $stmt = $dbh->prepare("SELECT * FROM notifications WHERE notification_advisor_id = :notification_advisor_id");
-    $stmt->bindParam(':notification_student_id', $student_id);
+    $stmt->bindParam(':notification_student_id', $advisor_id);
     $stmt->execute();
     $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
