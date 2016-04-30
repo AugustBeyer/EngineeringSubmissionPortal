@@ -133,6 +133,7 @@ try
                 $advisor_teams = array();
                 $advisor_teams = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+                print_r($advisor_teams);
                 for($j = 0; $j < count($advisor_teams); $j++)
                 {
                     if ($advisor_teams[$j] == $assignment_team_id)
