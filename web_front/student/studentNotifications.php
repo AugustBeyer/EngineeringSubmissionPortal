@@ -30,7 +30,7 @@ $dbh = null;
 
 function displayStudentNotifcations()
 {
-	global $notifications
+	global $notifications;
 	echo "<ul>";
     for ($i = 0; $i < count($notifications); $i++)
     {
