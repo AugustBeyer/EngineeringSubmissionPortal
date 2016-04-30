@@ -118,7 +118,7 @@ try
 
             //advisors
             $notification_advisor_ids = array();
-            $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisor_junction WHERE junction_team_id = :junction_team_id");
+            $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
             $stmt->bindParam(':junction_team_id', $assignment_team_id);
             $stmt->execute();
             $notification_advisor_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -126,8 +126,8 @@ try
             for($i = 0; $i < count($notification_advisor_ids); $i++)
             {
 
-                //Get all junction_team_ids from teams_advisor_junction table using advisor_id
-                $stmt = $dbh->prepare("SELECT junction_team_id FROM teams_advisor_junction WHERE junction_advisor_id = :advisor_id");
+                //Get all junction_team_ids from teams_advisors_junction table using advisor_id
+                $stmt = $dbh->prepare("SELECT junction_team_id FROM teams_advisors_junction WHERE junction_advisor_id = :advisor_id");
                 $stmt->bindParam(':advisor_id', $advisor_id);
                 $stmt -> execute();
                 $advisor_teams = array();
