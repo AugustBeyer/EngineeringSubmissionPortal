@@ -18,7 +18,7 @@ include "advisorNotifications.php";
     <link rel="stylesheet" type="text/css" href="../css/advisor.css">
     <link rel="stylesheet" type="text/css" href="../css/tables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/advisor.js"></script>
+  <script type="text/javascript" src="../js/student.js"></script>
     <script type="text/javascript" src="../js/slideIn.js"></script>
     <script type="text/javascript" src="../js/konami.js"></script>
     <script type="text/javascript">

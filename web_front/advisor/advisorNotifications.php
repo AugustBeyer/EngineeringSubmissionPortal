@@ -34,7 +34,7 @@ function displayAdvisorNotifcations()
     echo "<ul>";
     for ($i = 0; $i < count($notifications); $i++)
     {
-        echo "<li id=\"notif\"" . $notifications[$i]["notification_id"] . ">";
+        echo "<li id=\"notif" . $notifications[$i]["notification_id"] . "\">";
         echo "<div class=\"sampleNotification\">";
             echo "<a href=\"" . $notifications[$i]["notification_hyperlink"] . "\" >";
             echo "<p class=\"bodyStyle\">" . $notifications[$i]["notification_title"] . "</p>";
