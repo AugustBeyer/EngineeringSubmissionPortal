@@ -103,6 +103,51 @@ try
             $stmt->bindParam(':assignment_team_id', $assignment_team_id);
             $stmt->execute();
 
+            //Create notification for students and advisors on this team
+            $notification_student_ids = array();
+            $notification_advisor_ids = array();
+
+            //advisors
+            $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisor_junction WHERE junction_team_id = :junction_team_id");
+            $stmt->bindParam(':junction_team_id', $assignment_team_id);
+            $stmt->execute();
+            $notification_advisor_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+            for($i = 0; $i < count($notification_advisor_ids); $i++)
+            {
+                $project_name_array = array();
+                $assignment_info_array = array();
+                $result = $notification_advisor_ids[$i];
+                for ($i=0; $i < count($result); $i++) 
+                {
+                    //check if result is null
+                    if(is_null($result[$i]))
+                        continue;
+
+                    //Get project_name using junction_team_id from teams table
+                    $stmt = $dbh->prepare("SELECT project_name FROM teams WHERE primary_team_id = :team_id");
+                    $stmt->bindParam(':team_id', $result[$i]);
+                    $stmt -> execute();
+                    $project_name_result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    array_push($project_name_array, $project_name_result["project_name"]);
+
+                    //Get assignment_info array using junction_team_id from assignments table
+                    $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
+                    $stmt->bindParam(':team_id', $result[$i]);
+                    $stmt -> execute();
+                    $assignments_info_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    array_push($assignment_info_array, $assignments_info_result);
+                }
+            } 
+
+            $notification_title = "New Assignment";
+            $notification_text = $assignment_name . " has been created";
+            $notification_hyperlink = 
+            $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_hyperlink, notification_advisor_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_hyperlink, :notification_advisor_id, :notification_due_date)");
+            $stmt->bindParam(':notification_title', $notification_title);
+            $stmt->bindParam(':notification_text', $notification_text);
+            $stmt->execute();
+
             echo "New records created successfully\r\n";
         }
     }
