@@ -18,7 +18,7 @@ try
     $stmt = $dbh->prepare("SELECT * FROM notifications WHERE notification_student_id = :notification_student_id");
     $stmt->bindParam(':notification_student_id', $student_id);
     $stmt->execute();
-    $notifications = $stmt->fetch(PDO::FETCH_ASSOC);
+    $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 }
 catch(PDOException $e)
