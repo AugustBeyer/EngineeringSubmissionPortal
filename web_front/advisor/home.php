@@ -6,7 +6,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 1))
 } 
 include "teaminfo.php";
 include "assignmentinfo.php";
-include "advisorNotifications.php"
+include "advisorNotifications.php";
 ?>
 
 <html lang="en">
