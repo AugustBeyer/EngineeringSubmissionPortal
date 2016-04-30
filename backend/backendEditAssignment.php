@@ -20,10 +20,11 @@ try
 
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $dbh->prepare("SELECT reference_location FROM assignments WHERE primary_assignment_id = :aid");
-            $stmt->bindParam(':aid', $aid);
-            $stmt->execute();
+    $stmt = $dbh->prepare("SELECT reference_location, assignment_team_id FROM assignments WHERE primary_assignment_id = :aid");
+    $stmt->bindParam(':aid', $aid);
+    $stmt->execute();
 
+    $assignment_team_id = $stmt->fetch(PDO::FETCH_ASSOC)["assignment_team_id"];
     $reference_file_location = $stmt->fetch(PDO::FETCH_ASSOC)["reference_location"];
 
     if(!empty($reference_file_name))
@@ -94,6 +95,88 @@ try
     $stmt -> bindParam(':reference_file_name' , $reference_file_name);
     $stmt -> bindParam(':current_assignment_id' , $aid);
     $stmt -> execute();
+
+    /* Start notifications */
+
+    //Get all assignments for a team using assignment_team_id
+    $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
+    $stmt->bindParam(':team_id', $assignment_team_id);
+    $stmt -> execute();
+    $assignments_id_results = array();
+    $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    for($i = 0; $i < count($assignments_id_results); $i++)
+    {
+        if ($assignments_id_results[$i] == $assignment_team_id)
+        {
+            $notification_index_2 = $i;
+            break;
+        }
+    }
+
+    $notification_title = "Assignment Changed / Graded";
+    $notification_text = $assignment_name . " has been edited";
+
+    //advisors
+    $notification_advisor_ids = array();
+    $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
+    $stmt->bindParam(':junction_team_id', $assignment_team_id);
+    $stmt->execute();
+    $notification_advisor_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    for($i = 0; $i < count($notification_advisor_ids); $i++)
+    {
+
+        //Get all junction_team_ids from teams_advisors_junction table using advisor_id
+        $stmt = $dbh->prepare("SELECT junction_team_id FROM teams_advisors_junction WHERE junction_advisor_id = :advisor_id");
+        $stmt->bindParam(':advisor_id', $notification_advisor_ids[$i]);
+        $stmt -> execute();
+        $advisor_teams = array();
+        $advisor_teams = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        for($j = 0; $j < count($advisor_teams); $j++)
+        {
+            if ($advisor_teams[$j] == $assignment_team_id)
+            {
+                $notification_index_1 = $j;
+                break;
+            }
+        }
+
+        $notification_hyperlink = "editAssignment.php?index1=" . $notification_index_1 . "&index2=" . $notification_index_2;
+        $notification_advisor_id = $notification_advisor_ids[$i];
+        $notification_due_date = NULL;
+        $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_hyperlink, notification_advisor_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_hyperlink, :notification_advisor_id, :notification_due_date)");
+        $stmt->bindParam(':notification_title', $notification_title);
+        $stmt->bindParam(':notification_text', $notification_text);
+        $stmt->bindParam(':notification_hyperlink', $notification_hyperlink);
+        $stmt->bindParam(':notification_advisor_id', $notification_advisor_id);
+        $stmt->bindParam(':notification_due_date', $notification_due_date);
+        $stmt->execute();
+    }
+
+    //students
+    $notification_student_ids = array();
+    $stmt = $dbh->prepare("SELECT student_id FROM students WHERE students_team_id = :students_team_id");
+    $stmt->bindParam(':students_team_id', $assignment_team_id);
+    $stmt->execute();
+    $notification_student_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    for($i = 0; $i < count($notification_student_ids); $i++)
+    {
+        $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index_2;
+        $notification_student_id = $notification_student_ids[$i];
+        $notification_due_date = NULL;
+        $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_hyperlink, notification_student_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_hyperlink, :notification_student_id, :notification_due_date)");
+        $stmt->bindParam(':notification_title', $notification_title);
+        $stmt->bindParam(':notification_text', $notification_text);
+        $stmt->bindParam(':notification_hyperlink', $notification_hyperlink);
+        $stmt->bindParam(':notification_student_id', $notification_student_id);
+        $stmt->bindParam(':notification_due_date', $notification_due_date);
+        $stmt->execute();
+    }
+
+    /* End notifications */
 
     echo "New records created successfully\r\n";
     //print_r($_FILES);
