@@ -105,6 +105,7 @@ try
     $assignments_id_results = array();
     $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+    print_r($assignments_id_results);
     for($i = 0; $i < count($assignments_id_results); $i++)
     {
         if ($assignments_id_results[$i] == $assignment_team_id)
