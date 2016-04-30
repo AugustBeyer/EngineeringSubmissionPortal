@@ -4,6 +4,7 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 0))
 {
     die("Unauthorized access. Please return to the login page.");
 }
+include "studentNotifications.php";
 ?> 
 
 <html lang="en">
@@ -57,35 +58,13 @@ if (!(isset($_SESSION["user_id"]) && $_SESSION["isAdvisor"] == 0))
     <br><br><br><br>
         <p class="titleStyle">Notifications</p>
     <hr>
-    <ul>
-        <li  id="notif1">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif1');">x</a></p>
-            </div>
-        </li>   
-        <li  id="notif2">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif2');">x</a></p>
-            </div>
-        </li>   
-        <li  id="notif3">
-            <div class="sampleNotification">
-                <p class="bodyStyle">Sample notification title</p>
-                <p class="bodyDetail">Sample detail</p>
-            </div>
-            <div class="sampleNotificationMenu">
-                <p><a class="eraseNotification" onmousedown="removeNotification('#notif3');">x</a></p>
-            </div>
-        </li>   
-    </ul>  
+
+    <?php
+
+        displayStudentNotifcations();
+
+    ?>
+    
     </div>
     </body>
 </html>
