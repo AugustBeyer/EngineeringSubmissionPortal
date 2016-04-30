@@ -128,7 +128,7 @@ try
 
                 //Get all junction_team_ids from teams_advisors_junction table using advisor_id
                 $stmt = $dbh->prepare("SELECT junction_team_id FROM teams_advisors_junction WHERE junction_advisor_id = :advisor_id");
-                $stmt->bindParam(':advisor_id', $advisor_id);
+                $stmt->bindParam(':advisor_id', $notification_advisor_ids[$i]);
                 $stmt -> execute();
                 $advisor_teams = array();
                 $advisor_teams = $stmt->fetchAll(PDO::FETCH_COLUMN);
