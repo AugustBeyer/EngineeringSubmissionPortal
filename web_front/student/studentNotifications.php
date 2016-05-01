@@ -37,7 +37,7 @@ try
         {
             if ($assignments_id_results[$i] == $aid)
             {
-                $notification = $i;
+                $notification_index = $i;
                 break;
             }
         }
