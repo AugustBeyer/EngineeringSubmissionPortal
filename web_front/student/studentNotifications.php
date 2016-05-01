@@ -9,6 +9,7 @@ require "../../backend/db_config.php";
 
 $student_id = $_SESSION["user_id"];
 $notifications = array();
+$notifications_hyperlink_array = array();
 
 try 
 {
@@ -43,7 +44,7 @@ try
         }
 
         $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index;
-        array_push($notifications[$i]["notification_hyperlink"], $notification_hyperlink);
+        array_push($notifications_hyperlink_array, $notification_hyperlink);
     }  
 
 }
@@ -62,7 +63,7 @@ function displayStudentNotifcations()
     {
         echo "<li id=\"notif" . $notifications[$i]["notification_id"] . "\">";
         echo "<div class=\"sampleNotification\">";
-            echo "<a href=\"" . $notifications[$i]["notification_hyperlink"] . "\" >";
+            echo "<a href=\"" . $notifications_hyperlink_array[$i] . "\" >";
             echo "<p class=\"bodyStyle\">" . $notifications[$i]["notification_title"] . "</p>";
             echo "<p class=\"bodyDetail\">" . $notifications[$i]["notification_text"] . "</p>";
             echo "</a>";
