@@ -37,8 +37,6 @@ try
         $stmt->bindParam(':team_id', $assignment_team_id);
         $stmt -> execute();
         $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        print_r($assignments_id_results);
-        echo($notification_assignment_id);
         for($j = 0; $j < count($assignments_id_results); $j++)
         {   
             if ($assignments_id_results[$j] == $notification_assignment_id)
