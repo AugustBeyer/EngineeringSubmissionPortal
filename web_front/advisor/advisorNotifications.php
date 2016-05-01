@@ -46,7 +46,6 @@ try
             {
                 $notification_index1 = $k;
                 $notification_hyperlink = "assignmentdetail.php?index1=" . $notification_index1;
-                array_push($notifications_hyperlink_array, $notification_hyperlink);
                 break;
             }
         }
