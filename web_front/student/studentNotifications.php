@@ -42,8 +42,8 @@ try
             }
         }
 
-        $notification_hyperlink = array("notification_hyperlink" => "assignmentdetail.php?table_index=" . $notification_index);
-        array_push($notifications[$i], $notification_hyperlink);
+        $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index;
+        array_push($notifications[$i]["notification_hyperlink"], $notification_hyperlink);
     }  
 
 }
