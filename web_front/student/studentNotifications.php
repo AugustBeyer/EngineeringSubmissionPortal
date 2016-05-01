@@ -20,6 +20,7 @@ try
     $stmt->bindParam(':notification_student_id', $student_id);
     $stmt->execute();
     $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    print_r($notifications[$i]["notification_assignment_id"]);
     $notification_assignment_id = $notifications[$i]["notification_assignment_id"];
         
     //Get all assignments for a team using assignment_team_id
