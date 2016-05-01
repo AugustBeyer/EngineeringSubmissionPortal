@@ -81,7 +81,6 @@ function displayAdvisorNotifcations()
 {
     global $notifications;
     global $notifications_hyperlink_array;
-    print_r($notifications_hyperlink_array);
     echo "<ul>";
     for ($i = count($notifications) -1; $i >= 0; $i--)
     {
