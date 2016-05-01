@@ -34,7 +34,6 @@ try
         $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
         //print_r($assignments_id_results);
-        $notification_index = -1;
         for($j = 0; $j < count($assignments_id_results); $j++)
         {
             if ($assignments_id_results[$j] == $notification_assignment_id)
@@ -58,6 +57,7 @@ $dbh = null;
 function displayStudentNotifcations()
 {
 	global $notifications;
+    global $notifications_hyperlink_array;
 	echo "<ul>";
     for ($i = 0; $i < count($notifications); $i++)
     {
