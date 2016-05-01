@@ -58,6 +58,8 @@ function displayStudentNotifcations()
 {
 	global $notifications;
     global $notifications_hyperlink_array;
+    
+    print_r($notifications_hyperlink_array);
 	echo "<ul>";
     for ($i = 0; $i < count($notifications); $i++)
     {
