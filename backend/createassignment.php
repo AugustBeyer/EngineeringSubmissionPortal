@@ -103,6 +103,8 @@ try
             $stmt->bindParam(':assignment_team_id', $assignment_team_id);
             $stmt->execute();
 
+            $aid = $dbh->lastInsertId();
+
             /* Start notifications */
 
             $notification_title = "New Assignment";

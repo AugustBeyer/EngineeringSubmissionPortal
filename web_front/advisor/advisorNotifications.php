@@ -13,7 +13,7 @@ $notifications = array();
 /* Start notifications */
 
     //Get all assignments for a team using assignment_team_id
-    $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
+    /*$stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
     $stmt->bindParam(':team_id', $assignment_team_id);
     $stmt -> execute();
     $assignments_id_results = array();
@@ -90,7 +90,7 @@ $notifications = array();
         $stmt->bindParam(':notification_due_date', $notification_due_date);
         $stmt->execute();
     }
-
+    */
     /* End notifications */
 
 try 
