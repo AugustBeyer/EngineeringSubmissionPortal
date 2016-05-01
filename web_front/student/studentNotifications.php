@@ -35,7 +35,7 @@ try
         //print_r($assignments_id_results);
         for($i = 0; $i < count($assignments_id_results); $i++)
         {
-            if ($assignments_id_results[$i] == $aid)
+            if ($assignments_id_results[$i] == $notification_assignment_id)
             {
                 $notification_index = $i;
                 break;
