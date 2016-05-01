@@ -38,6 +38,7 @@ try
         {
             if ($assignments_id_results[$j] == $notification_assignment_id)
             {
+                echo "hello";
                 $notification_index = $j;
                 $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index;
                 array_push($notifications_hyperlink_array, $notification_hyperlink);
