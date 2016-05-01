@@ -20,25 +20,22 @@ try
     $stmt->bindParam(':notification_student_id', $student_id);
     $stmt->execute();
     $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $notification_assignment_id = $notifications[$i]["notification_assignment_id"];
+        
+    //Get all assignments for a team using assignment_team_id
+    $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
+    $stmt->bindParam(':team_id', $notification_assignment_id);
+    $stmt -> execute();
+    $assignments_id_results = array();
+    $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    print_r($assignments_id_results);
     for ($i = 0; $i < count($notifications); $i++)
     {
-        
-        $notification_assignment_id = $notifications[$i]["notification_assignment_id"];
-        
-        //Get all assignments for a team using assignment_team_id
-        $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
-        $stmt->bindParam(':team_id', $notification_assignment_id);
-        $stmt -> execute();
-        $assignments_id_results = array();
-        $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
         //print_r($assignments_id_results);
         for($j = 0; $j < count($assignments_id_results); $j++)
         {
             if ($assignments_id_results[$j] == $notification_assignment_id)
             {
-                echo "hello";
                 $notification_index = $j;
                 $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index;
                 array_push($notifications_hyperlink_array, $notification_hyperlink);
