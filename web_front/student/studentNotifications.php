@@ -63,7 +63,7 @@ function displayStudentNotifcations()
     global $notifications_hyperlink_array;
 
 	echo "<ul>";
-    for ($i = 0; $i < count($notifications); $i++)
+    for ($i = count($notifications); $i > 0; $i--)
     {
         echo "<li id=\"notif" . $notifications[$i]["notification_id"] . "\">";
         echo "<div class=\"sampleNotification\">";

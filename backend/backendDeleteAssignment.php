@@ -28,6 +28,11 @@ try
     $stmt = $dbh -> prepare("DELETE FROM assignments WHERE primary_assignment_id = :current_assignment_id");
     $stmt -> bindParam(':current_assignment_id' , $aid);
     $stmt -> execute();
+    
+    //delete the corresponding notification
+    $stmt = $dbh -> prepare("DELETE FROM notifications WHERE notification_assignment_id = :current_assignment_id");
+    $stmt -> bindParam(':current_assignment_id' , $aid);
+    $stmt -> execute();
 
     //print_r($_FILES);
     header('Location: ../web_front/advisor/home.php');
