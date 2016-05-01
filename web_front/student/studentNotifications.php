@@ -21,7 +21,12 @@ try
     $stmt->bindParam(':notification_student_id', $student_id);
     $stmt->execute();
     $notifications = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    
+    //Get student team
+    $stmt = $dbh->prepare("SELECT students_team_id FROM students WHERE student_id = :student_id");
+    $stmt->bindParam(':student_id', $student_id);
+    $stmt->execute();
+    $assignment_team_id = $stmt->fetchColumn();
         
 
     for ($i = 0; $i < count($notifications); $i++)
@@ -29,7 +34,7 @@ try
         $notification_assignment_id = $notifications[$i]["notification_assignment_id"];
         //Get all assignments for a team using assignment_team_id
         $stmt = $dbh->prepare("SELECT primary_assignment_id FROM assignments WHERE assignment_team_id = :team_id");
-        $stmt->bindParam(':team_id', $notification_assignment_id);
+        $stmt->bindParam(':team_id', $assignment_team_id);
         $stmt -> execute();
         $assignments_id_results = $stmt->fetchAll(PDO::FETCH_COLUMN);
         print_r($assignments_id_results);
