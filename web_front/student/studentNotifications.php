@@ -40,6 +40,7 @@ try
                 $notification_index = $j;
                 $notification_hyperlink = "assignmentdetail.php?table_index=" . $notification_index;
                 array_push($notifications_hyperlink_array, $notification_hyperlink);
+                echo("success");
                 break;
             }
         }
