@@ -11,6 +11,15 @@ function flipArrow(flip) {
 }
 function removeNotification(notif) {
     $(notif).slideUp();
+    $.ajax({
+    	url: '../backend/deleteNotification.php',
+    	type: 'post',
+    	data: {'notif_id': $(notif).attr('id')},
+    	error: function(xhr, desc, err) {
+        	console.log(xhr);
+        	console.log("Details: " + desc + "\nError:" + err);
+      	}
+    });
 }
 function switchView(view) {
     for (var index = 0; index < elements.length; index++)
