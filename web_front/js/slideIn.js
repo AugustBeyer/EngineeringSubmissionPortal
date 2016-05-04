@@ -12,7 +12,7 @@ function flipArrow(flip) {
 function removeNotification(notif) {
     $(notif).slideUp();
     $.ajax({
-    	url: '../backend/deleteNotification.php',
+    	url: '../../backend/deleteNotification.php',
     	type: 'post',
     	data: {'notif_id': $(notif).attr('id')},
     	error: function(xhr, desc, err) {
