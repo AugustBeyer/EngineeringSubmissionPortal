@@ -77,7 +77,7 @@ $j = htmlspecialchars($_GET["index2"]);
         printAssignmentDetail($i, $j);
         echo "<a href=editAssignment.php?index1=" . $i;
         echo "&index2=". $j . ">";
-        echo "<input class=\"form_button\" value =\"edit this assignment\" type=\"button\">"; 
+        echo "<input class=\"form_button\" value =\"grade/edit this assignment\" type=\"button\">"; 
         echo "</a>";
         echo "<a href=deleteAssignment.php?index1=" . $i;
         echo "&index2=". $j . ">";

@@ -11,6 +11,7 @@ if ($method == 'POST')
     $due_date = $_POST["due_date"];
     $description = $_POST["description"];
     $point_total = $_POST["point_total"];
+    $points_given = $_POST["points_given"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
 }
 
@@ -87,11 +88,12 @@ try
         }
     }
 
-    $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
+    $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
     $stmt -> bindParam(':name', $assignment_name);
     $stmt -> bindParam(':due_date', $due_date);
     $stmt -> bindParam(':description', $description);
     $stmt -> bindParam(':point_total', $point_total);
+    $stmt -> bindParam(':points_given', $points_given);
     $stmt -> bindParam(':reference_file_name' , $reference_file_name);
     $stmt -> bindParam(':current_assignment_id' , $aid);
     $stmt -> execute();
