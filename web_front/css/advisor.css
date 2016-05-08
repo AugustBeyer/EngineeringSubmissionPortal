@@ -485,4 +485,10 @@ text-align: center;
     left:0;
     right:0;
     text-align: left;   
+    clear: both; 
+}
+
+#newTeamBox input{
+width:100%;
+clear: both; 
 }
