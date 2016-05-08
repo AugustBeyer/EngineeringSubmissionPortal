@@ -168,6 +168,18 @@ function printAssignmentDetail($i)
         echo "</form>";
     }
 
+    //If an assignment was already uploaded
+    if (!empty(($current_assignment["submitted_file_name"])))
+    {
+        echo "<h3>Download Your File</h3>";
+        echo "<hr class=\"detailLine\">"; 
+
+        echo "<form action=\"../../backend/downloadfile.php?tid=" . $current_assignment["assignment_team_id"] . "&name=" . $current_assignment["submitted_file_name"] . "\" method=\"post\" enctype=\"multipart/form-data\">";
+        echo "<p>Download file</p>";
+        echo "<input class=\"newAssignmentButton\" type=\"submit\" name=\"Download\" value=\"Download\" >";
+        echo "</form>";
+    }
+
     //Upload deliverable 
     echo "<h3>Upload Your Assignment</h3>";
     echo "<hr class=\"detailLine\">";
