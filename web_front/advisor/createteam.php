@@ -70,13 +70,16 @@ include "advisorNotifications.php";
 <div id="mainPageWrapper">
 <!--Assignments-->
 <br><br>
-<div id="assignments" class="contentbox teaminfobox">
+<div id="newTeamBox" class="contentbox teaminfobox">
 
     <form action="../../backend/createteam.php" method="post">
     <div id = "appendHerePlease">
-	<p class="teaminfobox">Team Name: <input class="form_field" type = "text" name = "Teamname"></p> <br><br>
+	<label>Team Name</label>
+    <input class="form_field" type = "text" name = "Teamname"><br><br>
     
-	Student 1 Name: <input class="form_field" type = "text" name = "students[]"> <br>
+	<label>Student 1 Name</label>
+    <input class="form_field" type = "text" name = "students[]"> <br>
+    
     </div>
     <div id = "appendAdvisorsHere">
     </div>
