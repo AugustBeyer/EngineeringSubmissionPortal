@@ -82,16 +82,32 @@ function printSingleAssignmentTable($i)
                     echo "<tr class = \"even\">";
                 else
                     echo "<tr>";
+                
+                    //Link to Assignment
                     echo "<td><a href=assignmentdetail.php?index1=" . $i;
                     echo "&index2=". $j . ">";
+
+                    //Assignment name
                     echo $assignment_info_array[$i][$j]["name"];
                     echo "</a></td>";
+
+                    //Due Date
                     echo "<td><i>" . $assignment_info_array[$i][$j]["due_date"] . "</i></td>";
+
+                    //Submission time
                     if(is_null($assignment_info_array[$i][$j]["submitted_time"]))
                         echo "<td> --- </td>";
                     else
                         echo "<td><i>" . $assignment_info_array[$i][$j]["submitted_time"] . "</i></td>";
-                    echo "<td>" . $assignment_info_array[$i][$j]["point_total"] . "</td>";
+
+                    //Grade
+                    if(is_null($assignment_info_array[$i][$j]["point_total"]))
+                        echo "<td><i>---</i></td>";
+                    else if (is_null($assignment_info_array[$i][$j]["points_given"]))
+                        echo "<td><i> ---/" . $assignment_info_array[$i][$j]["point_total"] . "</i></td>";
+                    else
+                        echo "<td><i>" . $assignment_info_array[$i][$j]["points_given"] . "/" . $assignment_info_array[$i][$j]["point_total"] . "</i></td>";
+               
                 echo "</tr>";
             }
             echo "</tbody>";
@@ -134,8 +150,10 @@ function printAssignmentDetail($i, $j)
     //Grade
     if(is_null($current_assignment["point_total"]))
         echo "<p>Grade: <i>---</i></p>";
+    else if (is_null($current_assignment["points_given"]))
+        echo "<p>Grade: <i> ---/" . $current_assignment["point_total"] . "</i></p>";
     else
-        echo "<p>Grade: <i>" . $current_assignment["point_total"] . "</i></p>";
+        echo "<p>Grade: <i>" . $current_assignment["points_given"] . "/" . $current_assignment["point_total"] . "</i></p>";
 
     //Assignment Description
     echo "<br>";
@@ -197,8 +215,7 @@ function printEditAssignmentDetail($i, $j)
     echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
 
     //Points Given
-    //Point Total
-    echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"\"> <br><br>";
+    echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"". $current_assignment["points_given"]."\"> <br><br>";
 
     //Reference File
     echo "Reference File: <input class=\"form_file\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";
