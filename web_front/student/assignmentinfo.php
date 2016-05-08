@@ -80,15 +80,29 @@ function printAssignmentTable()
                 	echo "<tr class = \"even\">";
                 else
                 	echo "<tr>";
+                    //Assignment Link
                     echo "<td><a href=assignmentdetail.php?table_index=" . $i . ">";
+
+                    //Assignment Name
                     echo $assignment_info_array[$i]["name"];
                     echo "</a></td>";
+
+                    //Due Date
                     echo "<td><i>" . $assignment_info_array[$i]["due_date"] . "</i></td>";
+
+                    //Submitted Time
                     if(is_null($assignment_info_array[$i]["submitted_time"]))
                     	echo "<td> --- </td>";
                     else
                     	echo "<td><i>" . $assignment_info_array[$i]["submitted_time"] . "</i></td>";
-                    echo "<td>" . $assignment_info_array[$i]["point_total"] . "</td>";
+
+                    //Grade
+                    if(is_null($assignment_info_array[$i]["point_total"]))
+                        echo "<td><i>---</i></td>";
+                    else if (is_null($assignment_info_array[$i]["points_given"]))
+                        echo "<td><i> ---/" . $assignment_info_array[$i]["point_total"] . "</i></td>";
+                    else
+                        echo "<td><i>" . $assignment_info_array[$i]["points_given"] . "/" . $assignment_info_array[$i]["point_total"] . "</i></td>";
                 echo "</tr>";
             }
             echo "</tbody>";
@@ -117,11 +131,13 @@ function printAssignmentDetail($i)
     else
      	echo "<p>Submitted on: <i>" . $current_assignment["submitted_time"] . "</i></p>";
     
-    //Grade
+//Grade
     if(is_null($current_assignment["point_total"]))
-    	echo "<p>Grade: <i>---</i></p>";
+        echo "<p>Grade: <i>---</i></p>";
+    else if (is_null($current_assignment["points_given"]))
+        echo "<p>Grade: <i> ---/" . $current_assignment["point_total"] . "</i></p>";
     else
-    	echo "<p>Grade: <i>" . $current_assignment["point_total"] . "</i></p>";
+        echo "<p>Grade: <i>" . $current_assignment["points_given"] . "/" . $current_assignment["point_total"] . "</i></p>";
 
     //Assignment Description
     echo "<br>";
