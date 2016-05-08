@@ -88,7 +88,7 @@ try
         }
     }
 
-    $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
+    $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given, reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
     $stmt -> bindParam(':name', $assignment_name);
     $stmt -> bindParam(':due_date', $due_date);
     $stmt -> bindParam(':description', $description);
