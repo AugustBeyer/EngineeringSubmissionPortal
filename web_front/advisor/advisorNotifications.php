@@ -75,7 +75,7 @@ catch(PDOException $e)
     echo "Error: " . $e->getMessage();
 }
 
-$dbh = null;
+//$dbh = null;
 
 function displayAdvisorNotifcations()
 {
