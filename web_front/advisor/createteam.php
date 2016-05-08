@@ -74,7 +74,7 @@ include "advisorNotifications.php";
 
     <form action="../../backend/createteam.php" method="post">
     <div id = "appendHerePlease">
-	Team Name: <input class="form_field" type = "text" name = "Teamname"> <br><br>
+	<p class="teaminfobox">Team Name: <input class="form_field" type = "text" name = "Teamname"></p> <br><br>
     
 	Student 1 Name: <input class="form_field" type = "text" name = "students[]"> <br>
     </div>
