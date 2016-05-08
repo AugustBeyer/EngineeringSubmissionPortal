@@ -188,7 +188,7 @@ function editTeamForm($i)
     echo "<br><input type =\"submit\" value =\"submit\" class=\"form_button\">";
     echo "</form>";
 
-    $dbh = null;
+    //$dbh = null;
 }
 
 function deleteTeamForm($i)
