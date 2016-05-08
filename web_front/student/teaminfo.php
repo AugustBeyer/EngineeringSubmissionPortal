@@ -70,26 +70,32 @@ function printTeamInfo()
     global $project_name;
     global $students_name_array;
     global $advisors_array;
-
-    echo "<h4><i>" . $project_name . "</i></h4>";
-    echo "<br>";
-    echo "<h2>About Your Team</h2>";
-    echo "<h4>Student Team Members:</h4>";
-    //echo "<ul class=\"studentTeamList\">";
-    for ($i=0; $i < count($students_name_array); $i++) 
-    { 
-        echo "<p>" . $students_name_array[$i]["scu_username"] . "</p>";
+    if(count($students_name_array) == 0)
+    {
+        echo "<h4>Welcome to SCU's Engineering Submission Portal!</h4><br><p>Please talk to your senior design advisor or the engineering department, because you are currently not assigned to any team in our system.</p>";
     }
-    //echo "</ul>";
-    echo "<br>";
-    echo "<h4>Team Advisor(s):</h4>";
-    for ($i=0; $i < count($advisors_array); $i++) 
-    { 
-        echo "<p>" . $advisors_array[$i] . "</p>";
+    else
+    {
+        echo "<h4><i>" . $project_name . "</i></h4>";
+        echo "<br>";
+        echo "<h2>About Your Team</h2>";
+        echo "<h4>Student Team Members:</h4>";
+        //echo "<ul class=\"studentTeamList\">";
+        for ($i=0; $i < count($students_name_array); $i++) 
+        { 
+            echo "<p>" . $students_name_array[$i]["scu_username"] . "</p>";
+        }
+        //echo "</ul>";
+        echo "<br>";
+        echo "<h4>Team Advisor(s):</h4>";
+        for ($i=0; $i < count($advisors_array); $i++) 
+        { 
+            echo "<p>" . $advisors_array[$i] . "</p>";
+        }
+        //echo "</ul>";
+        echo "<br>";
+        //echo "<button class=\"newAssignmentButton\"><a href=\"http://www.niceme.me\">Edit This Meme</a></button>";
     }
-    //echo "</ul>";
-    echo "<br>";
-    //echo "<button class=\"newAssignmentButton\"><a href=\"http://www.niceme.me\">Edit This Meme</a></button>";
 }
 
 ?>
