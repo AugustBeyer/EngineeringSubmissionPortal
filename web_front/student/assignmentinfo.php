@@ -48,12 +48,17 @@ function printAssignmentTable()
 
 	
     //echo out html
-    if(count($assignment_info_array) == 0)
+   if($project_name == "")
+   {
+       
+   }
+    else if(count($assignment_info_array) == 0)
     {
         echo "<h4>". $project_name . "</h4>";
         echo "<p><i>--- No Assignments To View ---</i></p>";
     }
     else{
+        echo "<h1>Assignments</h1><br><p>Click on any assignment to view more information</p>";
         echo "<table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->";
         echo "<h4>". $project_name . "</h4>";
         echo "<thead>";

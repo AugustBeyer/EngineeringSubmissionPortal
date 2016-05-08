@@ -50,9 +50,7 @@ include "studentNotifications.php";
 <div id="mainPageWrapper">
     <div id="assignments" class="contentbox">
 
-    <h1>Assignments</h1>
-    <br>
-    <p>Click on any assignment to view more information</p>
+
     <?php
 
         printAssignmentTable();
