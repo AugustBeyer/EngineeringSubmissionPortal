@@ -70,7 +70,7 @@ include "advisorNotifications.php";
 <div id="mainPageWrapper">
 <!--Assignments-->
 <br><br>
-<div id="assignments" class="contentbox">
+<div id="assignments" class="contentbox teaminfobox">
 
     <form action="../../backend/createteam.php" method="post">
     <div id = "appendHerePlease">

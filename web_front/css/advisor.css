@@ -479,3 +479,7 @@ text-align: center;
 .inputfile + label:hover{
          box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
+
+.teaminfobox {
+    text-align: left;
+}
