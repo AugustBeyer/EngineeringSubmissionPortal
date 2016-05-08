@@ -482,10 +482,11 @@ text-align: center;
 
 #newTeamBox {
     width: 500px;
-    left:0;
-    right:0;
+    left:auto;
+    right:auto;
     text-align: left;   
     clear: both; 
+    padding: 50px;
 }
 
 #newTeamBox input{
