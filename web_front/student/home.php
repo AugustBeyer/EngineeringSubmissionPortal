@@ -11,7 +11,7 @@ include "studentNotifications.php";
 
 <html lang="en">
 <head>
-  <title>Student Homepage</title>
+  <title>Engineering Submission Portal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/png" href="../images/logo.png">
@@ -32,7 +32,7 @@ include "studentNotifications.php";
             <img src="../images/logo.png" alt="logo" class="icon">
             </a>
         </li>
-        <li id="ESPName"><a href="../../index.html"> SCU Engineering Submission Portal</a></li>
+        <li id="ESPName"><a href="../../index.html">ESP</a></li>
     </ul>
 </div>
 <div id="nav">
