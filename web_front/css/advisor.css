@@ -493,3 +493,8 @@ text-align: center;
 width:100%;
 clear: both; 
 }
+
+#createTeamSubmit{
+    width: auto;
+    
+}
