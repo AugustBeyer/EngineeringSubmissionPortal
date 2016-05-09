@@ -13,18 +13,18 @@ $(document).ready(function(){
 	var iter = 2;
 	var iter2 = 1;
     $("#moreStudents").click(function(){
-		append = "Student " + iter + " Name: <input class=\"form_field\" type = \"text\" name = \"students[]\"> <br>";
+		append = "<label>Student " + iter + " Name</label> <input class=\"form_field\" type = \"text\" name = \"students[]\"> <br>";
 		div.innerHTML = div.innerHTML + append;
 		iter = iter + 1;
     });
 	    $("#moreAdvisors").click(function(){
 				if(iter2 == 1)
 				{
-						append = "<br>Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+						append = "<br><label>Advisor " + iter2 + " Name</label> <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
 				}
 				else
 				{
-						append = "Advisor " + iter2 + " Name: <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
+						append = "<label>Advisor " + iter2 + " Name</label> <input class=\"form_field\" type = \"text\" name =\"advisors[]\"> <br>";
 				}
 		div2.innerHTML = div2.innerHTML + append;
 		iter2 = iter2 + 1;

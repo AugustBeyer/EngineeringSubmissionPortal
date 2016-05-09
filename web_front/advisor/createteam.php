@@ -85,7 +85,7 @@ include "advisorNotifications.php";
     </div>
     <button type="button" id="moreStudents" class="form_button">Add more students</button>
     <button type="button" id="moreAdvisors" class="form_button">Add another advisor</button>
-	<br><input type = "submit" value = "submit" class="form_button">
+	<input type = "submit" value = "submit" class="form_button" id="createTeamSubmit">
     </form>
 </div> 
 
