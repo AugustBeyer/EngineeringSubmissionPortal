@@ -95,56 +95,56 @@ try
 
     }
 
-        /* Start notifications */
+    /* Start notifications */
 
-        $notification_title = "Assignment Changed / Graded";
-        $notification_text = $assignment_name . " has been edited";
-        $notification_assignment_id = $aid;
-        $notification_due_date = NULL;
+    $notification_title = "Assignment Changed / Graded";
+    $notification_text = $assignment_name . " has been edited";
+    $notification_assignment_id = $aid;
+    $notification_due_date = NULL;
 
-        //advisors
-        $notification_advisor_ids = array();
-        $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
-        $stmt->bindParam(':junction_team_id', $assignment_team_id);
+    //advisors
+    $notification_advisor_ids = array();
+    $stmt = $dbh->prepare("SELECT junction_advisor_id FROM teams_advisors_junction WHERE junction_team_id = :junction_team_id");
+    $stmt->bindParam(':junction_team_id', $assignment_team_id);
+    $stmt->execute();
+    $notification_advisor_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    for($i = 0; $i < count($notification_advisor_ids); $i++)
+    {
+        $notification_advisor_id = $notification_advisor_ids[$i];
+        $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_assignment_id, notification_advisor_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_assignment_id, :notification_advisor_id, :notification_due_date)");
+        $stmt->bindParam(':notification_title', $notification_title);
+        $stmt->bindParam(':notification_text', $notification_text);
+        $stmt->bindParam(':notification_assignment_id', $notification_assignment_id);
+        $stmt->bindParam(':notification_advisor_id', $notification_advisor_id);
+        $stmt->bindParam(':notification_due_date', $notification_due_date);
         $stmt->execute();
-        $notification_advisor_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 
-        for($i = 0; $i < count($notification_advisor_ids); $i++)
-        {
-            $notification_advisor_id = $notification_advisor_ids[$i];
-            $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_assignment_id, notification_advisor_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_assignment_id, :notification_advisor_id, :notification_due_date)");
-            $stmt->bindParam(':notification_title', $notification_title);
-            $stmt->bindParam(':notification_text', $notification_text);
-            $stmt->bindParam(':notification_assignment_id', $notification_assignment_id);
-            $stmt->bindParam(':notification_advisor_id', $notification_advisor_id);
-            $stmt->bindParam(':notification_due_date', $notification_due_date);
-            $stmt->execute();
-        }
+    //students
+    $notification_student_ids = array();
+    $stmt = $dbh->prepare("SELECT student_id FROM students WHERE students_team_id = :students_team_id");
+    $stmt->bindParam(':students_team_id', $assignment_team_id);
+    $stmt->execute();
+    $notification_student_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-        //students
-        $notification_student_ids = array();
-        $stmt = $dbh->prepare("SELECT student_id FROM students WHERE students_team_id = :students_team_id");
-        $stmt->bindParam(':students_team_id', $assignment_team_id);
+    for($i = 0; $i < count($notification_student_ids); $i++)
+    {
+        $notification_student_id = $notification_student_ids[$i];
+        $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_assignment_id, notification_student_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_assignment_id, :notification_student_id, :notification_due_date)");
+        $stmt->bindParam(':notification_title', $notification_title);
+        $stmt->bindParam(':notification_text', $notification_text);
+        $stmt->bindParam(':notification_assignment_id', $notification_assignment_id);
+        $stmt->bindParam(':notification_student_id', $notification_student_id);
+        $stmt->bindParam(':notification_due_date', $notification_due_date);
         $stmt->execute();
-        $notification_student_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
 
-        for($i = 0; $i < count($notification_student_ids); $i++)
-        {
-            $notification_student_id = $notification_student_ids[$i];
-            $stmt = $dbh->prepare("INSERT INTO notifications (notification_title, notification_text, notification_assignment_id, notification_student_id, notification_due_date) VALUES (:notification_title, :notification_text, :notification_assignment_id, :notification_student_id, :notification_due_date)");
-            $stmt->bindParam(':notification_title', $notification_title);
-            $stmt->bindParam(':notification_text', $notification_text);
-            $stmt->bindParam(':notification_assignment_id', $notification_assignment_id);
-            $stmt->bindParam(':notification_student_id', $notification_student_id);
-            $stmt->bindParam(':notification_due_date', $notification_due_date);
-            $stmt->execute();
-        }
+    /* End notifications */
 
-        /* End notifications */
-
-        echo "New records created successfully\r\n";
-        //print_r($_FILES);
-        header('Location: ../web_front/advisor/home.php');
+    echo "New records created successfully\r\n";
+    //print_r($_FILES);
+    header('Location: ../web_front/advisor/home.php');
     }
 }
 catch(PDOException $e)
