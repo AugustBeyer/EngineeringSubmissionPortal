@@ -12,6 +12,7 @@ if ($method == 'POST')
     $point_total = $_POST["point_total"];
     $teams_array = $_POST["teams"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
+    $file_format = $_POST["file_format"];
 }
 
 //print_r($_POST);
@@ -75,7 +76,7 @@ try
 
             if (!empty($_FILES["fileToUpload"]["name"]))
             {
-            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, reference_location, reference_file_name, assignment_team_id) VALUES (:name, :due_date, :description, :point_total, :reference_location, :reference_file_name, :assignment_team_id)");
+            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, reference_location, reference_file_name, assignment_team_id, file_format) VALUES (:name, :due_date, :description, :point_total, :reference_location, :reference_file_name, :assignment_team_id, :file_format)");
             	$stmt->bindParam(':name', $assignment_name);
             	$stmt->bindParam(':due_date', $due_date);
             	$stmt->bindParam(':description', $description);
@@ -83,16 +84,18 @@ try
             	$stmt->bindParam(':reference_location', $reference_file_location);
             	$stmt->bindParam(':reference_file_name', $reference_file_name);
             	$stmt->bindParam(':assignment_team_id', $assignment_team_id);
+                $stmt->bindParam(':file_format', $file_format);
             	$stmt->execute();
             }
             else
             {
-            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, assignment_team_id) VALUES (:name, :due_date, :description, :point_total, :assignment_team_id)");
+            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, assignment_team_id, file_format) VALUES (:name, :due_date, :description, :point_total, :assignment_team_id, :file_format)");
             	$stmt->bindParam(':name', $assignment_name);
             	$stmt->bindParam(':due_date', $due_date);
             	$stmt->bindParam(':description', $description);
             	$stmt->bindParam(':point_total', $point_total);
             	$stmt->bindParam(':assignment_team_id', $assignment_team_id);
+                $stmt->bindParam(':file_format', $file_format);
             	$stmt->execute();
             }
 

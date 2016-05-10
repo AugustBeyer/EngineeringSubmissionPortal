@@ -12,6 +12,7 @@ if ($method == 'POST')
     $point_total = $_POST["point_total"];
     $points_given = $_POST["points_given"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
+    $file_format = $_POST["file_format"];
 }
 
 $aid = htmlspecialchars($_GET["aid"]);
@@ -67,7 +68,7 @@ try
 
     if (!empty($reference_file_name))
     {
-        $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given, reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
+        $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given, reference_file_name = :reference_file_name, file_format = :file_format WHERE primary_assignment_id = :current_assignment_id");
         $stmt -> bindParam(':name', $assignment_name);
         $stmt -> bindParam(':due_date', $due_date);
         $stmt -> bindParam(':description', $description);
@@ -75,17 +76,19 @@ try
         $stmt -> bindParam(':points_given', $points_given);
         $stmt -> bindParam(':reference_file_name' , $reference_file_name);
         $stmt -> bindParam(':current_assignment_id' , $aid);
+        $stmt -> bindParam(':file_format', $file_format);
         $stmt -> execute();
     }
     else
     {
-        $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given WHERE primary_assignment_id = :current_assignment_id");
+        $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given, file_format = :file_format WHERE primary_assignment_id = :current_assignment_id");
         $stmt -> bindParam(':name', $assignment_name);
         $stmt -> bindParam(':due_date', $due_date);
         $stmt -> bindParam(':description', $description);
         $stmt -> bindParam(':point_total', $point_total);
         $stmt -> bindParam(':points_given', $points_given);
         $stmt -> bindParam(':current_assignment_id' , $aid);
+        $stmt -> bindParam(':file_format', $file_format);
         $stmt -> execute();
     }
 
