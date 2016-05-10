@@ -161,7 +161,7 @@ function editTeamForm($i)
     echo "<div id =\"appendHerePlease\">";
     echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
 
-    for ($j=0; $j < count($students_name_results); $++j) 
+    for ($j=0; $j < count($students_name_results); ++$j) 
     { 
         echo "Student " . $j;
         echo " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
@@ -170,7 +170,7 @@ function editTeamForm($i)
     echo "</div>";
 
     echo "<div id =\"appendAdvisorsHere\">";
-    for ($j=0; $j < count($advisors_id_results); $++j) 
+    for ($j=0; $j < count($advisors_id_results); ++$j) 
     { 
         $stmt = $dbh->prepare("SELECT advisor_username FROM advisors WHERE primary_advisor_id = :primary_advisor_id");
         $stmt->bindParam(':primary_advisor_id', $advisors_id_results[$j]);
