@@ -91,7 +91,7 @@ function printTeamNavBar()
     for ($i=0; $i < count($project_name_array); $i++) { 
         
         //check if project_name_array index is null
-        if( (is_null($project_name_array[$i])) || (count($student_name_array[$i]) == 0) )
+        if( (is_null($project_name_array[$i])) )
             continue;
         //echo out html
         echo "<a href =\"teamdetail.php?index1=". $i ."\">". $project_name_array[$i] . "</a>";
