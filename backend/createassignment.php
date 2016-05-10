@@ -146,7 +146,7 @@ try
             /* End notifications */           
         }
     }
-    header('Location: ../web_front/advisor/home.php'); 
+    //header('Location: ../web_front/advisor/home.php'); 
 }
 catch(PDOException $e)
 {
