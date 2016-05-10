@@ -144,7 +144,7 @@ try
     echo "New records created successfully\r\n";
     //print_r($_FILES);
     header('Location: ../web_front/advisor/home.php');
-    }
+    
 }
 catch(PDOException $e)
 {
