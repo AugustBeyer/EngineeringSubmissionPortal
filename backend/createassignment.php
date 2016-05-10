@@ -54,11 +54,12 @@ try
                 echo "No team selected\n";
                 $uploadOk = 0;
             }
-            
+
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) 
             {
                 echo "Sorry, your file was not uploaded.\n";
+                break;
             // if everything is ok, try to upload file
             } 
             //We're good to upload
