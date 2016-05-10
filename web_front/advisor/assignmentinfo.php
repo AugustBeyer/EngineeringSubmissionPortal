@@ -215,7 +215,7 @@ function printEditAssignmentDetail($i, $j)
     echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
 
     //Points Given
-    echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"". $current_assignment["points_given"]."\"> <br><br>";
+    echo "Points Given: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"". $current_assignment["points_given"]."\"> <br><br>";
 
     //File Formats
     echo "Point Total: *<input class=\"form_field\" type = \"text\" name = \"file_format\"value = \"". $current_assignment["file_format"]."\"> <br><br>";
