@@ -158,7 +158,7 @@ function editTeamForm($i)
 
     echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
     
-    echo "<div id =\"appendHerePlease\">";
+    echo "<div>";
     echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
 
     for ($j=0; $j < count($students_name_results); $j++) 
@@ -170,7 +170,7 @@ function editTeamForm($i)
     }
     echo "</div>";
 
-    echo "<div id =\"appendAdvisorsHere\">";
+    echo "<div>";
     for ($j=0; $j < count($advisors_id_results); $j++) 
     { 
         $stmt = $dbh->prepare("SELECT advisor_username FROM advisors WHERE primary_advisor_id = :primary_advisor_id");
@@ -183,6 +183,11 @@ function editTeamForm($i)
         echo "Advisor " . $counter . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
         echo "<input type=\"hidden\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result . "\"><br>";
     }
+    echo "</div>";
+
+    echo "<div id =\"appendHerePlease\">";
+    echo "</div>";
+    echo "<div id =\"appendAdvisorsHere\">";
     echo "</div>";
 
     echo "<button type=\"button\" id=\"editMoreStudents\" class=\"form_button\">Add more students</button>";
