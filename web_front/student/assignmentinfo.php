@@ -151,7 +151,7 @@ function printAssignmentDetail($i)
     echo "<p class= \"assignDetail\">". $current_assignment["description"];
     
     //File Formats
-    echo "<p>Submitted on: " . $current_assignment["file_format"] . "</p>";
+    echo "<p>Accepted File Formats: " . $current_assignment["file_format"] . "</p>";
 
     //If advisor included a reference file display it here
     if (!empty(($current_assignment["reference_file_name"])))
