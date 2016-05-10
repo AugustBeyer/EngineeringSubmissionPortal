@@ -150,11 +150,8 @@ function printAssignmentDetail($i)
     echo "<hr class= \"detailLine\">";
     echo "<p class= \"assignDetail\">". $current_assignment["description"];
     
-    /*
-    echo "<h3>Additional Files</h3>";
-    echo "<hr class=\"detailLine\">";
-    echo "<br>";
-    */
+    //File Formats
+    echo "<p>Submitted on: " . $current_assignment["file_format"] . "</p>";
 
     //If advisor included a reference file display it here
     if (!empty(($current_assignment["reference_file_name"])))
