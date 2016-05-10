@@ -59,7 +59,7 @@ try
         else 
         {
             echo $target_file;
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+            if (move_uploaded_file($_FILES["fileToUpload"]["name"], $target_file)) 
             {
                 echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
             } 
@@ -70,7 +70,7 @@ try
         }
     }
 
-    if ($uploadOk == 1)
+    if (!empty($reference_file_name))
     {
         $stmt = $dbh -> prepare("UPDATE assignments SET name = :name, due_date = :due_date, description = :description, point_total = :point_total, points_given = :points_given, reference_file_name = :reference_file_name WHERE primary_assignment_id = :current_assignment_id");
         $stmt -> bindParam(':name', $assignment_name);
