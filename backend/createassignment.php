@@ -54,6 +54,7 @@ try
                 echo "No team selected\n";
                 $uploadOk = 0;
             }
+            
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) 
             {

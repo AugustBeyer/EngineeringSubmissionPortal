@@ -33,45 +33,28 @@ try
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) 
-        {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if($check !== false) 
-            {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } 
-            else 
-            {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-        }
         // Check if file already exists
         if (file_exists($target_file)) 
         {
-            echo "Sorry, file already exists.";
+            echo "Sorry, file already exists.\n";
             $uploadOk = 0;
         }
-
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 500000) 
         {
-            echo "Sorry, your file is too large.";
+            echo "Sorry, your file is too large.\n";
             $uploadOk = 0;
+        }
+        //Make sure at least one team is selected
+        if(empty($teams_array))
+        {
+            echo "No team selected.\n";
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) 
         {
-            echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-        } 
-        // Check if teams array is empty
-        if(empty($teams_array))
-        {
-            echo "No team selected";
+            echo "Sorry, your file was not uploaded.\n";
         }
         else 
         {
