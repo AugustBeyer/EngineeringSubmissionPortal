@@ -32,7 +32,7 @@ try
             $assignment_team_id = $stmt->fetch(PDO::FETCH_ASSOC)["primary_team_id"];
             $reference_file_location = $current_year_path . $assignment_team_id;
 
-            if (isset($_FILES["fileToUpload"]))
+            if (!empty($_FILES["fileToUpload"]))
             {
             	$uploadOk = 1;
             	$target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
@@ -73,7 +73,7 @@ try
             }
             //We're good to upload
 
-            if (isset($_FILES["fileToUpload"]))
+            if (!empty($_FILES["fileToUpload"]))
             {
             	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, reference_location, reference_file_name, assignment_team_id) VALUES (:name, :due_date, :description, :point_total, :reference_location, :reference_file_name, :assignment_team_id)");
             	$stmt->bindParam(':name', $assignment_name);
