@@ -92,7 +92,6 @@ try
         $stmt -> bindParam(':points_given', $points_given);
         $stmt -> bindParam(':current_assignment_id' , $aid);
         $stmt -> execute();
-
     }
 
     /* Start notifications */
