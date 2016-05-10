@@ -60,7 +60,7 @@ include "advisorNotifications.php";
     Assign to teams: * <br><br>
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
-    <label>File Formats: </label><input class="form_field" type = "text" name = "file_format" hint="zip, pdf, docx"> <br><br>
+    <label>File Formats: </label><input class="form_field" type = "text" name = "file_format" placeholder="zip, pdf, docx"> <br><br>
 	Reference file: <input class="form_file" type="file" name="fileToUpload" id="fileToUpload"/> <!--<input class="inputfile" type="file" name="fileToUpload" id="fileToUpload" data-multiple-caption="{count} files selected" multiple /><label for="fileToUpload">Choose a file</label> -->
                      <br><br>
 	
