@@ -54,12 +54,13 @@ include "advisorNotifications.php";
     <form action="../../backend/createassignment.php" method="post" id="usrform" enctype="multipart/form-data">
 	
     Assignment Name: *<input class="form_field" type = "text" name = "assignment_name"> <br><br>
-	Due date: *<input class="form_field" type = "date" name = "due_date"> <br><br>
-    Due time: *<input class="form_field" type = "time" name="due_time"> <br><br>    
+	Due date: *<input class="form_field" type = "date" name = "due_date" placeholder="YYYY-MM-DD"> <br><br>
+    Due time: *<input class="form_field" type = "time" name="due_time" placeholder="HH:MM"> <br><br>    
     Point total: <input class="form_field" type = "number" name = "point_total"> <br><br>
     Assign to teams: * <br><br>
     all teams: <input type="checkbox" onclick="checkAll(this)"><br>
      <!--<input type = "text" name="Teamname"> --> <?php printTeamCheckboxes(); ?><br><br>
+    <label>File Formats: </label><input class="form_field" type = "text" name = "file_format" placeholder="zip, pdf, docx"> <br><br>
 	Reference file: <input class="form_file" type="file" name="fileToUpload" id="fileToUpload"/> <!--<input class="inputfile" type="file" name="fileToUpload" id="fileToUpload" data-multiple-caption="{count} files selected" multiple /><label for="fileToUpload">Choose a file</label> -->
                      <br><br>
 	

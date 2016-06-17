@@ -1,13 +1,10 @@
 <?php
-
+require "system_config.php";
 $team_id = htmlspecialchars($_GET["tid"]);
 $file_name = htmlspecialchars($_GET["name"]);
 
-$current_year_path = "../2016/";
-
-echo "Preparing file for download\n";
-
 $file = $current_year_path . $team_id . "/" . $file_name;
+echo "Preparing file for download:\t" . $file ."\n";
 
     if (file_exists($file)) 
     {

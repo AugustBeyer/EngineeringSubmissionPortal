@@ -56,7 +56,7 @@ function printSingleAssignmentTable($i)
     global $assignment_info_array;
 
     //check if project_name_array index is null
-        if( (is_null($project_name_array[$i])) )
+        if( (empty($project_name_array[$i])) )
             return;
         //echo out html
         if(count($assignment_info_array[$i]) == 0)
@@ -215,7 +215,10 @@ function printEditAssignmentDetail($i, $j)
     echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"point_total\"value = \"" . $current_assignment["point_total"] . "\"> <br><br>";
 
     //Points Given
-    echo "Point Total: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"". $current_assignment["points_given"]."\"> <br><br>";
+    echo "Points Given: *<input class=\"form_field\" type = \"number\" name = \"points_given\"value = \"". $current_assignment["points_given"]."\"> <br><br>";
+
+    //File Formats
+    echo "File Format: *<input class=\"form_field\" type = \"text\" name = \"file_format\"value = \"". $current_assignment["file_format"]."\"> <br><br>";
 
     //Reference File
     echo "Reference File: <input class=\"form_file\" type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\" value = \"" . $current_assignment["reference_file_name"] . "\"> <br><br>";

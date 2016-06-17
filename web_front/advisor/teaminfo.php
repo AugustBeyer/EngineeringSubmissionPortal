@@ -91,7 +91,7 @@ function printTeamNavBar()
     for ($i=0; $i < count($project_name_array); $i++) { 
         
         //check if project_name_array index is null
-        if( (is_null($project_name_array[$i])) || (count($student_name_array[$i]) == 0) )
+        if( (is_null($project_name_array[$i])) )
             continue;
         //echo out html
         echo "<a href =\"teamdetail.php?index1=". $i ."\">". $project_name_array[$i] . "</a>";
@@ -158,18 +158,19 @@ function editTeamForm($i)
 
     echo "<form action=\"../../backend/backendEditTeam.php?tid=" . $i . "\" method=\"post\">";
     
-    echo "<div id =\"appendHerePlease\">";
+    echo "<div>";
     echo "Team Name: <input class=\"form_field\" type =\"text\" name =\"Teamname\" value=\"" . $project_name_result . "\"><br><br>";
 
     for ($j=0; $j < count($students_name_results); $j++) 
-    { 
-        echo "Student " . $j+1;
+    {
+        $counter = $j + 1; 
+        echo "Student " . $counter;
         echo " Name: " . $students_name_results[$j] . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\" checked><br>";
         echo "<input type=\"hidden\" id=\"myCheck" . $i ."\" name=\"oldstudents[]\" value=\"" . $students_name_results[$j] ."\"><br>";
     }
     echo "</div>";
 
-    echo "<div id =\"appendAdvisorsHere\">";
+    echo "<div>";
     for ($j=0; $j < count($advisors_id_results); $j++) 
     { 
         $stmt = $dbh->prepare("SELECT advisor_username FROM advisors WHERE primary_advisor_id = :primary_advisor_id");
@@ -178,9 +179,15 @@ function editTeamForm($i)
         $advisor_name_result = $stmt->fetch(PDO::FETCH_COLUMN);
        // print_r($advisor_name_result);
 
-        echo "Advisor " . $j+1 . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
+        $counter = $j + 1;
+        echo "Advisor " . $counter . " Name: " . $advisor_name_result . " <input type=\"checkbox\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result ."\" checked><br>";
         echo "<input type=\"hidden\" id=\"myCheck" . $i ."\" name=\"oldadvisors[]\" value=\"" . $advisor_name_result . "\"><br>";
     }
+    echo "</div>";
+
+    echo "<div id =\"appendHerePlease\">";
+    echo "</div>";
+    echo "<div id =\"appendAdvisorsHere\">";
     echo "</div>";
 
     echo "<button type=\"button\" id=\"editMoreStudents\" class=\"form_button\">Add more students</button>";

@@ -1,8 +1,7 @@
 <?php
 session_start();
 require "db_config.php";
-
-$current_year_path = "/DCNFS/web/esp/2016/";
+require "system_config.php";
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'POST')
@@ -13,13 +12,13 @@ if ($method == 'POST')
     $point_total = $_POST["point_total"];
     $teams_array = $_POST["teams"];
     $reference_file_name = $_FILES["fileToUpload"]["name"];
+    $file_format = $_POST["file_format"];
 }
 
 //print_r($_POST);
 
 try 
 {
-    
     if(!empty($teams_array))
     {
         for ($i=0; $i < count($teams_array); $i++) 
@@ -34,74 +33,71 @@ try
             $assignment_team_id = $stmt->fetch(PDO::FETCH_ASSOC)["primary_team_id"];
             $reference_file_location = $current_year_path . $assignment_team_id;
 
-            $target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            if (!empty($_FILES["fileToUpload"]["name"]))
+            {
+            	$uploadOk = 1;
+            	$target_file = $reference_file_location . "/" . basename($_FILES["fileToUpload"]["name"]);
+            	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-            // Check if image file is a actual image or fake image
-            if(isset($_POST["submit"])) 
-            {
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                if($check !== false) 
-                {
-                    echo "File is an image - " . $check["mime"] . ".";
-                    $uploadOk = 1;
-                } 
-                else 
-                {
-                    echo "File is not an image.";
-                    $uploadOk = 0;
-                }
-            }
-            // Check if file already exists
-            if (file_exists($target_file)) 
-            {
-                echo "Sorry, file already exists.";
-                $uploadOk = 0;
-            }
+            	// Check if file already exists
+	            if (file_exists($target_file)) 
+	            {
+	                echo "Sorry, your reference file already exists. Please name it something else.\n";
+	                $uploadOk = 0;
+	            }
+	            // Check file size
+	            if ($_FILES["fileToUpload"]["size"] > 500000) 
+	            {
+	                echo "Sorry, your file is too large.\n";
+	                $uploadOk = 0;
+	            }
+	            if(empty($teams_array))
+	            {
+	                echo "No team selected\n";
+	                $uploadOk = 0;
+	            }
 
-            // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 500000) 
-            {
-                echo "Sorry, your file is too large.";
-                $uploadOk = 0;
+	            // Check if $uploadOk is set to 0 by an error
+	            if ($uploadOk == 0) 
+	            {
+	                echo "Sorry, your file was not uploaded.\n";
+	                break;
+	            // if everything is ok, try to upload file
+	            } 
+	            else
+	            {
+	            	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+                	{
+                    	echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                	}
+	            }
             }
+            //We're good to upload
 
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0) 
+            if (!empty($_FILES["fileToUpload"]["name"]))
             {
-                echo "Sorry, your file was not uploaded.";
-            // if everything is ok, try to upload file
-            } 
-            // Check if teams array is empty
-            if(empty($teams_array))
-            {
-                echo "No team selected";
+            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, reference_location, reference_file_name, assignment_team_id, file_format) VALUES (:name, :due_date, :description, :point_total, :reference_location, :reference_file_name, :assignment_team_id, :file_format)");
+            	$stmt->bindParam(':name', $assignment_name);
+            	$stmt->bindParam(':due_date', $due_date);
+            	$stmt->bindParam(':description', $description);
+            	$stmt->bindParam(':point_total', $point_total);
+            	$stmt->bindParam(':reference_location', $reference_file_location);
+            	$stmt->bindParam(':reference_file_name', $reference_file_name);
+            	$stmt->bindParam(':assignment_team_id', $assignment_team_id);
+                $stmt->bindParam(':file_format', $file_format);
+            	$stmt->execute();
             }
-            else 
+            else
             {
-                echo $target_file;
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
-                {
-                    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                } 
-                else 
-                {
-                    echo "Sorry, there was an error uploading your file.";
-                }
+            	$stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, assignment_team_id, file_format) VALUES (:name, :due_date, :description, :point_total, :assignment_team_id, :file_format)");
+            	$stmt->bindParam(':name', $assignment_name);
+            	$stmt->bindParam(':due_date', $due_date);
+            	$stmt->bindParam(':description', $description);
+            	$stmt->bindParam(':point_total', $point_total);
+            	$stmt->bindParam(':assignment_team_id', $assignment_team_id);
+                $stmt->bindParam(':file_format', $file_format);
+            	$stmt->execute();
             }
-
-            //insert entry into assignments table
-            $stmt = $dbh->prepare("INSERT INTO assignments (name, due_date, description, point_total, reference_location, reference_file_name, assignment_team_id)
-        VALUES (:name, :due_date, :description, :point_total, :reference_location, :reference_file_name, :assignment_team_id)");
-            $stmt->bindParam(':name', $assignment_name);
-            $stmt->bindParam(':due_date', $due_date);
-            $stmt->bindParam(':description', $description);
-            $stmt->bindParam(':point_total', $point_total);
-            $stmt->bindParam(':reference_location', $reference_file_location);
-            $stmt->bindParam(':reference_file_name', $reference_file_name);
-            $stmt->bindParam(':assignment_team_id', $assignment_team_id);
-            $stmt->execute();
 
             $aid = $dbh->lastInsertId();
 
@@ -150,13 +146,10 @@ try
                 $stmt->execute();
             }
 
-            /* End notifications */
-
-
-            echo "New records created successfully\r\n";
+            /* End notifications */           
         }
     }
-    header('Location: ../web_front/advisor/home.php'); //FuckPHP5
+    header('Location: ../web_front/advisor/home.php'); 
 }
 catch(PDOException $e)
 {
@@ -164,6 +157,5 @@ catch(PDOException $e)
 }
 
 $dbh = null;
-
 
 ?>

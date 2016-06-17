@@ -1,9 +1,7 @@
 <?php
 session_start();
 require "db_config.php";
-
-$current_year_path = "/DCNFS/web/esp/2016/";
-$current_year = "2016";
+require "system_config.php";
 
 $tid = htmlspecialchars($_GET["tid"]);
 

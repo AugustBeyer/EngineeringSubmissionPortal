@@ -1,8 +1,7 @@
 <?php
 session_start();
 require "db_config.php";
-
-$current_year_path = "/DCNFS/web/esp/2016/";
+require "system_config.php";
 
 $aid = htmlspecialchars($_GET["aid"]);
 try 
