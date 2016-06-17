@@ -38,7 +38,7 @@ include "advisorNotifications.php";
             <img src="../images/logo.png" alt="logo" class="icon">
             </a>
         </li>
-        <li id="ESPName"><a href="../../index.html"> SCU Engineering Submission Portal</a></li>
+        <li id="ESPName"><a href="../../index.html"> SCU ESP</a></li>
     </ul>
 </div>
 <div id="nav">
@@ -61,7 +61,7 @@ include "advisorNotifications.php";
 
       <!--  <li><a href="grades.php" class="link" onmousedown="//switchView('grades');">GRADES</a>
         </li>-->
-        <li><a href="settings.php" class="link">SETTINGS</a>
+        <li><a href="../../index.html" class="link">LOG OUT</a>
         </li>
     </ul>
 </div>
