@@ -32,7 +32,7 @@ include "studentNotifications.php";
             <img src="../images/logo.png" alt="logo" class="icon">
             </a>
         </li>
-        <li id="ESPName"><a href="../../index.html">Engineering Submission Portal</a></li>
+        <li id="ESPName">ESP</li>
     </ul>
 </div>
 <div id="nav">
@@ -42,7 +42,7 @@ include "studentNotifications.php";
         </li>
         <li><a href="#about" class="link"onclick="return false"onmousedown="autoScrollTo('about');">ABOUT</a>
         </li>
-        <li><a href="settings.php" class="link">SETTINGS</a>
+       <li><a href="../../index.html" class="link">LOG OUT</a>
         </li>
     </ul>
 </div>
